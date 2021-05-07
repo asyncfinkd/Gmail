@@ -2,16 +2,16 @@ import React, { StrictMode } from "react";
 import { render } from "react-dom";
 import "./index.css";
 import App from "./App";
-import { firebase } from "./components/lib/firebase.prod";
-import { FirebaseContext } from "./components/context/firebase";
+// import { firebase } from "./components/lib/firebase.prod";
+// import { FirebaseContext } from "./components/context/firebase";
 import reportWebVitals from "./reportWebVitals";
 
 render(
-  <FirebaseContext.Provider value={{ firebase }}>
-    <StrictMode>
-      <App />
-    </StrictMode>
-  </FirebaseContext.Provider>,
+  // <FirebaseContext.Provider value={{ firebase }}>
+  <StrictMode>
+    <App />
+  </StrictMode>,
+  // </FirebaseContext.Provider>
   document.getElementById("root")
 );
 

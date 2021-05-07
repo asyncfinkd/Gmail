@@ -1,7 +1,7 @@
 import Firebase from "firebase/app";
 import "firebase/firestore";
 
-const config = Firebase.initializeApp({
+const firebaseApp = Firebase.initializeApp({
   apiKey: "AIzaSyDVEfnBnOv3Kmv9oROtODCKtl4pfhhdEw0",
   authDomain: "project-5683637946761684414.firebaseapp.com",
   projectId: "project-5683637946761684414",
@@ -11,6 +11,6 @@ const config = Firebase.initializeApp({
   measurementId: "G-9CGLSCFE4B",
 });
 
-const firebase = config.firestore();
+const db = firebaseApp.firestore();
 
-export { firebase };
+export default db;
