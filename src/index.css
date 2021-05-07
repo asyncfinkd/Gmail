@@ -1,13 +1,112 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+@font-face {
+  src: url("https://fonts.gstatic.com/s/googlesans/v14/4UaGrENHsxJlGDuGo1OIlL3Owp4.woff2");
+  font-family: "Google Sans";
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /*===== Colores =====*/
+  --first-color: #1a73e8;
+  --input-color: #80868b;
+  --border-color: #dadce0;
+
+  /*===== Fuente y tipografia =====*/
+  --body-font: "Roboto", sans-serif;
+  --normal-font-size: 1rem;
+  --small-font-size: 0.75rem;
+}
+
+body {
+  background: #fff;
+  direction: ltr;
+  font-size: 14px;
+  line-height: 1.4286;
+  margin: 0;
+  padding: 0;
+  color: #202124;
+  font-family: "Roboto", sans-serif;
+}
+
+.form__div {
+  position: relative;
+  height: 48px;
+  max-width: 100%;
+}
+.form__input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: var(--normal-font-size);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  outline: none;
+  padding: 13px 15px;
+  height: 54px;
+  max-width: 100%;
+  background: none;
+  z-index: 1;
+}
+
+.form__label {
+  position: absolute;
+  left: 0.82rem;
+  top: 1rem;
+  padding: 0 0.25rem;
+  background-color: #fff;
+  max-width: 100%;
+  color: #5f6368;
+  font-size: var(--normal-font-size);
+  transition: 0.3s;
+}
+
+.form__input:focus + .form__label {
+  top: -0.5rem;
+  left: 0.6rem;
+  color: #1a73e8;
+  font-size: var(--small-font-size);
+  font-weight: 500;
+  z-index: 10;
+}
+
+.form__input:not(:placeholder-shown).form__input:not(:focus) + .form__label {
+  top: -0.5rem;
+  left: 0.6rem;
+  font-size: var(--small-font-size);
+  font-weight: 500;
+  z-index: 10;
+}
+
+.form__input:focus {
+  border: 2px solid var(--first-color);
+}
+
+.error__input {
+  border: 1px solid #d93025 !important;
+}
+
+.form__input:focus + .error__label {
+  color: #d93025 !important;
+}
+
+.error__input:focus {
+  border: 2px solid #d93025 !important;
+}
+
+.padding-error-render {
+  padding-bottom: 3px;
+  padding-top: 5px;
+}
+
+.padding-none-render {
+  padding-bottom: 3px;
+  padding-top: 14px;
 }
