@@ -37,6 +37,7 @@ body {
 .form__div {
   position: relative;
   height: 48px;
+  max-width: 100%;
 }
 .form__input {
   position: absolute;
@@ -50,6 +51,7 @@ body {
   outline: none;
   padding: 13px 15px;
   height: 54px;
+  max-width: 100%;
   background: none;
   z-index: 1;
 }
@@ -59,25 +61,10 @@ body {
   top: 1rem;
   padding: 0 0.25rem;
   background-color: #fff;
+  max-width: 100%;
   color: #5f6368;
   font-size: var(--normal-font-size);
   transition: 0.3s;
-}
-.form__button {
-  display: block;
-  margin-left: auto;
-  padding: 0.75rem 2rem;
-  outline: none;
-  border: none;
-  background-color: var(--first-color);
-  color: #fff;
-  font-size: var(--normal-font-size);
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.form__button:hover {
-  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.15);
 }
 
 /*Input focus move up label*/

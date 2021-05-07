@@ -38,6 +38,7 @@ export const Content = styled.div`
     transition: 0.2;
     min-height: 0;
     position: relative;
+    max-width: 100%;
   }
 `;
 
@@ -70,6 +71,8 @@ export const Hero = styled.div`
     overflow-y: auto;
     padding: 24px 24px 36px;
   }
+  padding: 24px 36px;
+  overflow: hidden;
   @media (min-width: 450px) {
     padding: 48px 40px 36px;
   }
@@ -227,10 +230,6 @@ export const LearnMoreContainer = styled.div`
   font-size: 14px;
   line-height: 1.4286;
   margin: 32px auto 0 auto;
-  width: 82%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 export const LearnMoreContainer__Link = styled.a`
@@ -312,69 +311,4 @@ export const FormContainer__createAccount = styled.div`
   outline: none;
   cursor: pointer;
   text-transform: none;
-`;
-
-export const FooterContainer = styled.footer`
-  @media (min-width: 601px) {
-    height: 16.8px;
-    position: absolute;
-    bottom: 15rem;
-    padding: 24px 0 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-  }
-
-  @media (min-width: 450px) {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  font-size: 12px;
-  line-height: 1.4;
-  padding: 0 24px 14px;
-  position: absolute;
-  bottom: 0.3rem;
-  cursor: pointer;
-`;
-
-export const FooterContent = styled.div`
-  @media (min-width: 601px) {
-    margin: 0;
-    margin-left: -19.5rem;
-    margin-top: 0.7rem;
-  }
-
-  height: 16.8px;
-  margin: 8px 0;
-`;
-
-export const FooterList = styled.ul`
-  @media (min-width: 601px) {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  list-style: none;
-  margin: 8px -16px;
-  padding: 0;
-  position: absolute;
-  right: 10rem;
-
-  & li {
-    display: inline-block;
-    margin: 0;
-  }
-
-  & li a {
-    border-radius: 2px;
-    color: #757575;
-    display: inline-block;
-    margin-top: -6px;
-    padding: 6px 16px;
-  }
 `;
