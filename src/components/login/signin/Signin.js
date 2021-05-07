@@ -12,6 +12,7 @@ import {
   ViewContainerContent,
   ViewContainerPresentation,
   ViewContainerPresentation__Header,
+  ViewContainerPresentation__HeaderContent,
 } from "./styles/SigninStyle";
 
 export default function Signin() {
@@ -81,6 +82,9 @@ export default function Signin() {
                         <h1>
                           <span>Sign in</span>
                         </h1>
+                        <ViewContainerPresentation__HeaderContent>
+                          <span>Continue to Gmail</span>
+                        </ViewContainerPresentation__HeaderContent>
                       </ViewContainerPresentation__Header>
                     </div>
                   </ViewContainerPresentation>

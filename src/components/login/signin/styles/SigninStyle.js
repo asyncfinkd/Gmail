@@ -1,4 +1,4 @@
-import styled from "styled-components/macro";
+import styled from "styled-components";
 
 export const Container = styled.div`
   @media all and (min-width: 601px) {
@@ -125,6 +125,16 @@ export const ViewContainerPresentation__Header = styled.div`
     line-height: 1.3333;
     margin-top: 0;
     margin-bottom: 0;
-    font-family: "Google Sans" !important;
+    font-family: "Google Sans";
   }
+`;
+
+export const ViewContainerPresentation__HeaderContent = styled.div`
+  color: #202124;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.1px;
+  line-height: 1.5;
+  padding-bottom: 0;
+  padding-top: 8px;
 `;
