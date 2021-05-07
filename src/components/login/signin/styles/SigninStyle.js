@@ -100,3 +100,31 @@ export const ViewContainer = styled.div`
 export const ViewContainerContent = styled.div`
   /* none */
 `;
+
+export const ViewContainerPresentation = styled.div`
+  overflow: hidden;
+  margin: auto -24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  @media (min-width: 450px) {
+    padding-left: 40px;
+    padding-right: 40px;
+    margin: auto -40px;
+  }
+`;
+
+export const ViewContainerPresentation__Header = styled.div`
+  text-align: center;
+
+  & h1 {
+    color: #202124;
+    padding-bottom: 0;
+    padding-top: 16px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.3333;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: "Google Sans" !important;
+  }
+`;

@@ -10,6 +10,8 @@ import {
   Percent,
   PercentContent,
   ViewContainerContent,
+  ViewContainerPresentation,
+  ViewContainerPresentation__Header,
 } from "./styles/SigninStyle";
 
 export default function Signin() {
@@ -72,7 +74,17 @@ export default function Signin() {
                 </HeroImageContent>
               </HeroImage>
               <ViewContainer>
-                <ViewContainerContent></ViewContainerContent>
+                <ViewContainerContent>
+                  <ViewContainerPresentation role="presentation">
+                    <div>
+                      <ViewContainerPresentation__Header>
+                        <h1>
+                          <span>Sign in</span>
+                        </h1>
+                      </ViewContainerPresentation__Header>
+                    </div>
+                  </ViewContainerPresentation>
+                </ViewContainerContent>
               </ViewContainer>
             </HeroContent>
           </Hero>

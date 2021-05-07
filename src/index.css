@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
+@font-face {
+  src: url("https://fonts.gstatic.com/s/googlesans/v14/4UaGrENHsxJlGDuGo1OIlL3Owp4.woff2");
+  font-family: "Google Sans";
+}
+
 * {
   margin: 0;
   padding: 0;
