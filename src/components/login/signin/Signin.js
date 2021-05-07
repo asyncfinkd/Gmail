@@ -13,6 +13,11 @@ import {
   ViewContainerPresentation,
   ViewContainerPresentation__Header,
   ViewContainerPresentation__HeaderContent,
+  FormContainer,
+  FormContent,
+  FormSection,
+  FormSectionContent,
+  FormContent__Button,
 } from "./styles/SigninStyle";
 
 export default function Signin() {
@@ -87,6 +92,53 @@ export default function Signin() {
                         </ViewContainerPresentation__HeaderContent>
                       </ViewContainerPresentation__Header>
                     </div>
+                    <FormContainer role="presentation">
+                      <FormContent role="presentation">
+                        <div>
+                          <div>
+                            <form
+                              onSubmit={(e) => {
+                                e.preventDefault();
+                              }}
+                            >
+                              <span>
+                                <FormSection>
+                                  <FormSectionContent>
+                                    <div
+                                      style={{
+                                        width: "370px",
+                                        margin: "0 auto",
+                                      }}
+                                    >
+                                      <div class="form__div">
+                                        <input
+                                          type="text"
+                                          class="form__input"
+                                          placeholder=" "
+                                        />
+                                        <label for="" class="form__label">
+                                          Email or phone
+                                        </label>
+                                      </div>
+                                      <div
+                                        style={{
+                                          paddingBottom: "3px",
+                                          paddingTop: "14px",
+                                        }}
+                                      >
+                                        <FormContent__Button type="button">
+                                          Forgot email?
+                                        </FormContent__Button>
+                                      </div>
+                                    </div>
+                                  </FormSectionContent>
+                                </FormSection>
+                              </span>
+                            </form>
+                          </div>
+                        </div>
+                      </FormContent>
+                    </FormContainer>
                   </ViewContainerPresentation>
                 </ViewContainerContent>
               </ViewContainer>
