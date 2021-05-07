@@ -208,4 +208,173 @@ export const FormContent__Button = styled.button`
   padding: 0;
   text-align: left;
   border: 0;
+
+  &:focus::after {
+    background-color: rgba(26, 115, 232, 0.149);
+    border-radius: 2px;
+    bottom: -2px;
+    content: "";
+    left: -3px;
+    position: absolute;
+    right: -3px;
+    top: -2px;
+    z-index: -1;
+  }
+`;
+
+export const LearnMoreContainer = styled.div`
+  color: #5f6368;
+  font-size: 14px;
+  line-height: 1.4286;
+  margin: 32px auto 0 auto;
+  width: 82%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const LearnMoreContainer__Link = styled.a`
+  color: #1a73eb;
+  border-radius: 4px;
+  letter-spacing: 0.25px;
+  outline: 0;
+  position: relative;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:focus::after {
+    background-color: rgba(26, 115, 232, 0.149);
+    border-radius: 2px;
+    bottom: -2px;
+    content: "";
+    left: -3px;
+    position: absolute;
+    right: -3px;
+    top: -2px;
+    z-index: -1;
+  }
+`;
+
+export const FormContainer__Footer = styled.div`
+  display: flex;
+  flex-grow: 0;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 33px;
+  min-height: 48px;
+  padding-bottom: 20px;
+  align-items: center;
+`;
+
+export const FormContainer__FooterButtons = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  flex-direction: row-reverse;
+`;
+
+export const FormContainer__NextButton = styled.button`
+  color: #fff;
+  background-color: #1a73e8;
+  padding: 0 24px 0 24px;
+  font-family: "Google Sans";
+  font-size: 0.875rem;
+  letter-spacing: 0.0107142857em;
+  font-weight: 500;
+  text-transform: none;
+  transition: border 280ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: none;
+  height: 36px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%),
+      0 1px 3px 1px rgb(60 64 67 / 15%);
+  }
+
+  &:active {
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%),
+      0 2px 6px 2px rgb(60 64 67 / 15%);
+  }
+`;
+
+export const FormContainer__createAccount = styled.div`
+  text-align: left;
+  margin-top: 6px;
+  border-radius: 4px;
+  font-family: "Google Sans";
+  font-size: inherit;
+  letter-spacing: 0.25px;
+  color: #1a73e8;
+  outline: none;
+  cursor: pointer;
+  text-transform: none;
+`;
+
+export const FooterContainer = styled.footer`
+  @media (min-width: 601px) {
+    height: 16.8px;
+    position: absolute;
+    bottom: 15rem;
+    padding: 24px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  @media (min-width: 450px) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 1.4;
+  padding: 0 24px 14px;
+  position: absolute;
+  bottom: 0.3rem;
+  cursor: pointer;
+`;
+
+export const FooterContent = styled.div`
+  @media (min-width: 601px) {
+    margin: 0;
+    margin-left: -19.5rem;
+    margin-top: 0.7rem;
+  }
+
+  height: 16.8px;
+  margin: 8px 0;
+`;
+
+export const FooterList = styled.ul`
+  @media (min-width: 601px) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  list-style: none;
+  margin: 8px -16px;
+  padding: 0;
+  position: absolute;
+  right: 10rem;
+
+  & li {
+    display: inline-block;
+    margin: 0;
+  }
+
+  & li a {
+    border-radius: 2px;
+    color: #757575;
+    display: inline-block;
+    margin-top: -6px;
+    padding: 6px 16px;
+  }
 `;

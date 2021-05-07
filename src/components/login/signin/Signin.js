@@ -18,6 +18,15 @@ import {
   FormSection,
   FormSectionContent,
   FormContent__Button,
+  LearnMoreContainer,
+  LearnMoreContainer__Link,
+  FormContainer__Footer,
+  FormContainer__FooterButtons,
+  FormContainer__NextButton,
+  FormContainer__createAccount,
+  FooterContainer,
+  FooterContent,
+  FooterList,
 } from "./styles/SigninStyle";
 
 export default function Signin() {
@@ -136,15 +145,62 @@ export default function Signin() {
                               </span>
                             </form>
                           </div>
+                          <span>
+                            <LearnMoreContainer>
+                              <div
+                                style={{
+                                  paddingTop: "9px",
+                                  paddingBottom: "3px",
+                                }}
+                              >
+                                Not your computer? Use Guest mode to sign in
+                                privately.{" "}
+                                <LearnMoreContainer__Link href="https://support.google.com/chrome/answer/6130773?hl=en-GB">
+                                  Learn more
+                                </LearnMoreContainer__Link>
+                              </div>
+                            </LearnMoreContainer>
+                          </span>
                         </div>
                       </FormContent>
                     </FormContainer>
+                    <FormContainer__Footer>
+                      <FormContainer__FooterButtons>
+                        <div style={{ textAlign: "right", flexGrow: "1" }}>
+                          <div>
+                            <div>
+                              <FormContainer__NextButton>
+                                Next
+                              </FormContainer__NextButton>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          style={{
+                            textAlign: "right",
+                            flexGrow: "1",
+                          }}
+                        >
+                          <div>
+                            <FormContainer__createAccount>
+                              Create account
+                            </FormContainer__createAccount>
+                          </div>
+                        </div>
+                      </FormContainer__FooterButtons>
+                    </FormContainer__Footer>
                   </ViewContainerPresentation>
                 </ViewContainerContent>
               </ViewContainer>
             </HeroContent>
           </Hero>
         </Content>
+        <FooterContainer>
+          <FooterContent>English (United Kingdom)</FooterContent>
+          <FooterList>
+            <li>a</li>
+          </FooterList>
+        </FooterContainer>
       </Container>
     </>
   );
