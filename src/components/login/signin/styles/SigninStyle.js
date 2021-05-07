@@ -69,10 +69,14 @@ export const Hero = styled.div`
     min-height: 500px;
     transition: 0.2s;
     overflow-y: auto;
-    padding: 24px 24px 36px;
   }
+
   padding: 24px 36px;
   overflow: hidden;
+  flex-grow: 1;
+  min-height: 95vh;
+  box-flex: 1;
+
   @media (min-width: 450px) {
     padding: 48px 40px 36px;
   }
@@ -311,4 +315,68 @@ export const FormContainer__createAccount = styled.div`
   outline: none;
   cursor: pointer;
   text-transform: none;
+`;
+
+export const FooterContainer__footer = styled.footer`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 1.4;
+  padding: 0 24px 14px;
+
+  @media (max-width: 600px) {
+    margin-top: -0.5rem;
+  }
+
+  @media (max-width: 360px) {
+    margin-top: -4rem;
+  }
+
+  @media (min-width: 450px) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media (min-width: 601px) {
+    height: 16.8px;
+    padding: 24px 0 0;
+    position: absolute;
+    width: 100%;
+  }
+`;
+
+export const FooterContainer__footerContent = styled.div`
+  height: 16.8px;
+  margin: 8px 0;
+
+  @media (min-width: 601px) {
+    margin: 0;
+  }
+`;
+
+export const FooterContainer__footerContentUL = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 8px -16px;
+
+  @media (min-width: 601px) {
+    margin: -2px -16px;
+  }
+
+  & li {
+    display: inline-block;
+    margin: 0;
+  }
+
+  & li a {
+    border-radius: 2px;
+    color: #757575;
+    display: inline-block;
+    margin-top: -6px;
+    padding: 6px 16px;
+    font-weight: 600;
+    transition: background 0.2s;
+    text-decoration: none;
+  }
 `;

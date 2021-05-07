@@ -24,6 +24,9 @@ import {
   FormContainer__FooterButtons,
   FormContainer__NextButton,
   FormContainer__createAccount,
+  FooterContainer__footer,
+  FooterContainer__footerContent,
+  FooterContainer__footerContentUL,
 } from "./styles/SigninStyle";
 
 export default function Signin() {
@@ -122,6 +125,7 @@ export default function Signin() {
                                           type="text"
                                           class="form__input"
                                           placeholder=" "
+                                          autoFocus
                                         />
                                         <label for="" class="form__label">
                                           Email or phone
@@ -198,6 +202,37 @@ export default function Signin() {
               </ViewContainer>
             </HeroContent>
           </Hero>
+          <FooterContainer__footer>
+            <FooterContainer__footerContent>
+              English (United Kingdom)
+            </FooterContainer__footerContent>
+            <FooterContainer__footerContentUL>
+              <li>
+                <a
+                  href="https://support.google.com/accounts?hl=en-GB"
+                  target="_blank"
+                >
+                  Help
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://accounts.google.com/TOS?loc=GE&amp;hl=en-GB&amp;privacy=true"
+                  target="_blank"
+                >
+                  Privacy
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://accounts.google.com/TOS?loc=GE&amp;hl=en-GB"
+                  target="_blank"
+                >
+                  Terms
+                </a>
+              </li>
+            </FooterContainer__footerContentUL>
+          </FooterContainer__footer>
         </Content>
       </Container>
     </>
