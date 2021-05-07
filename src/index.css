@@ -100,3 +100,13 @@ body {
 .error__input:focus {
   border: 2px solid #d93025 !important;
 }
+
+.padding-error-render {
+  padding-bottom: 3px;
+  padding-top: 5px;
+}
+
+.padding-none-render {
+  padding-bottom: 3px;
+  padding-top: 14px;
+}

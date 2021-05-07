@@ -93,10 +93,11 @@ export default function SigninForm() {
                   </div>
                 )}
                 <div
-                  style={{
-                    paddingBottom: "3px",
-                    paddingTop: "14px",
-                  }}
+                  className={
+                    emailOrPhoneError
+                      ? "padding-error-render"
+                      : "padding-none-render"
+                  }
                 >
                   <FormContent__Button type="button">
                     Forgot email?
