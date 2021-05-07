@@ -93,7 +93,8 @@ body {
   border: 1px solid #d93025 !important;
 }
 
-.form__input:focus + .error__label {
+.form__input:focus + .error__label,
+.form__input:not(:placeholder-shown).form__input:not(:focus) + .error__label {
   color: #d93025 !important;
 }
 

@@ -9,21 +9,37 @@ import {
   FormContainer__FooterButtons,
   FormContainer__NextButton,
   FormContainer__createAccount,
-} from "../styles/SigninStyle";
+} from "../../../styles/SigninStyle";
+import db from "../../../../../lib/firebase.prod";
 
-export default function SigninForm() {
+export default function SigninForm({ setUser, setFirstPage }) {
   const [emailOrPhone, setEmailOrPhone] = useState("");
   const [emailOrPhoneError, setEmailOrPhoneError] = useState(false);
+  const [notFound, setNotFound] = useState(false);
   const EmailOrPhoneRef = useRef();
 
   const identification = () => {
     if (!emailOrPhone) {
       setEmailOrPhoneError(true);
       EmailOrPhoneRef.current.focus();
+      setNotFound(false);
     } else {
       setEmailOrPhoneError(false);
+      db.collection("users").onSnapshot((querySnapshot) => {
+        querySnapshot.docs.map((user) => {
+          if (user.data().gmail == emailOrPhone) {
+            setUser(user.data());
+            setFirstPage(false);
+            setNotFound(false);
+          } else {
+            setNotFound(true);
+            setEmailOrPhoneError(false);
+          }
+        });
+      });
     }
   };
+
   return (
     <>
       <form
@@ -45,7 +61,7 @@ export default function SigninForm() {
                   <input
                     type="text"
                     className={
-                      emailOrPhoneError
+                      emailOrPhoneError || notFound
                         ? "form__input error__input"
                         : "form__input"
                     }
@@ -58,7 +74,7 @@ export default function SigninForm() {
                   <label
                     for=""
                     className={
-                      emailOrPhoneError
+                      emailOrPhoneError || notFound
                         ? "form__label error__label"
                         : "form__label"
                     }
@@ -92,9 +108,36 @@ export default function SigninForm() {
                     Enter an email or phone number
                   </div>
                 )}
+
+                {notFound && (
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      color: "#d93025",
+                      fontSize: "13px",
+                      textAlign: "center",
+                      marginTop: "12px",
+                    }}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      fill="currentColor"
+                      focusable="false"
+                      style={{ marginRight: "8px" }}
+                      width="16px"
+                      height="16px"
+                      viewBox="0 0 24 24"
+                      xmlns="https://www.w3.org/2000/svg"
+                    >
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
+                    </svg>
+                    Couldn't find your Google Account
+                  </div>
+                )}
                 <div
                   className={
-                    emailOrPhoneError
+                    emailOrPhoneError || notFound
                       ? "padding-error-render"
                       : "padding-none-render"
                   }
