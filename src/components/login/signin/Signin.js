@@ -1,4 +1,5 @@
 import React from "react";
+import SigninForm from "./form/SigninForm";
 import {
   Container,
   Content,
@@ -15,15 +16,6 @@ import {
   ViewContainerPresentation__HeaderContent,
   FormContainer,
   FormContent,
-  FormSection,
-  FormSectionContent,
-  FormContent__Button,
-  LearnMoreContainer,
-  LearnMoreContainer__Link,
-  FormContainer__Footer,
-  FormContainer__FooterButtons,
-  FormContainer__NextButton,
-  FormContainer__createAccount,
   FooterContainer__footer,
   FooterContainer__footerContent,
   FooterContainer__footerContentUL,
@@ -105,94 +97,7 @@ export default function Signin() {
                       <FormContent role="presentation">
                         <div>
                           <div>
-                            <form
-                              onSubmit={(e) => {
-                                e.preventDefault();
-                              }}
-                            >
-                              <span>
-                                <FormSection>
-                                  <FormSectionContent>
-                                    <div
-                                      style={{
-                                        width: "370px",
-                                        margin: "0 auto",
-                                        maxWidth: "100%",
-                                      }}
-                                    >
-                                      <div class="form__div">
-                                        <input
-                                          type="text"
-                                          class="form__input"
-                                          placeholder=" "
-                                          autoFocus
-                                        />
-                                        <label for="" class="form__label">
-                                          Email or phone
-                                        </label>
-                                      </div>
-                                      <div
-                                        style={{
-                                          paddingBottom: "3px",
-                                          paddingTop: "14px",
-                                        }}
-                                      >
-                                        <FormContent__Button type="button">
-                                          Forgot email?
-                                        </FormContent__Button>
-                                        <span>
-                                          <LearnMoreContainer>
-                                            <div
-                                              style={{
-                                                paddingTop: "9px",
-                                                paddingBottom: "3px",
-                                              }}
-                                            >
-                                              Not your computer? Use Guest mode
-                                              to sign in privately.{" "}
-                                              <LearnMoreContainer__Link href="https://support.google.com/chrome/answer/6130773?hl=en-GB">
-                                                Learn more
-                                              </LearnMoreContainer__Link>
-                                            </div>
-                                          </LearnMoreContainer>
-                                          <FormContainer__Footer>
-                                            <FormContainer__FooterButtons>
-                                              <div
-                                                style={{
-                                                  textAlign: "right",
-                                                  flexGrow: "1",
-                                                }}
-                                              >
-                                                <div>
-                                                  <div>
-                                                    <FormContainer__NextButton>
-                                                      Next
-                                                    </FormContainer__NextButton>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                              <div
-                                                style={{
-                                                  textAlign: "right",
-                                                  flexGrow: "1",
-                                                }}
-                                              >
-                                                <div>
-                                                  <FormContainer__createAccount>
-                                                    Create account
-                                                  </FormContainer__createAccount>
-                                                </div>
-                                              </div>
-                                            </FormContainer__FooterButtons>
-                                          </FormContainer__Footer>
-                                        </span>
-                                      </div>
-                                    </div>
-                                    {/* chance */}
-                                  </FormSectionContent>
-                                </FormSection>
-                              </span>
-                            </form>
+                            <SigninForm />
                           </div>
                         </div>
                       </FormContent>

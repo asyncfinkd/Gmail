@@ -55,6 +55,7 @@ body {
   background: none;
   z-index: 1;
 }
+
 .form__label {
   position: absolute;
   left: 0.82rem;
@@ -67,7 +68,6 @@ body {
   transition: 0.3s;
 }
 
-/*Input focus move up label*/
 .form__input:focus + .form__label {
   top: -0.5rem;
   left: 0.6rem;
@@ -77,16 +77,26 @@ body {
   z-index: 10;
 }
 
-/*Input focus sticky top label*/
 .form__input:not(:placeholder-shown).form__input:not(:focus) + .form__label {
   top: -0.5rem;
-  left: 0.8rem;
+  left: 0.6rem;
   font-size: var(--small-font-size);
   font-weight: 500;
   z-index: 10;
 }
 
-/*Input focus*/
 .form__input:focus {
   border: 2px solid var(--first-color);
+}
+
+.error__input {
+  border: 1px solid #d93025 !important;
+}
+
+.form__input:focus + .error__label {
+  color: #d93025 !important;
+}
+
+.error__input:focus {
+  border: 2px solid #d93025 !important;
 }
