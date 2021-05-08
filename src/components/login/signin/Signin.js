@@ -15,6 +15,7 @@ export default function Signin() {
           name={user.name}
           closeSecondPage={() => setFirstPage(true)}
           gmail={user.gmail}
+          userPassword={user.password}
         />
       )}
     </>

@@ -205,8 +205,9 @@ export const FormContent__Button = styled.button`
   border-radius: 4px;
   color: #1a73e8;
   display: inline-block;
-  font-weight: 550;
-  letter-spacing: -0.25px;
+  font-weight: 600;
+  letter-spacing: 0.25px;
+  font-family: "Roboto";
   outline: none;
   position: relative;
   background-color: transparent;
