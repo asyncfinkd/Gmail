@@ -20,6 +20,18 @@ import {
   SecondChild__Image,
   SecondChild__FigCaption,
 } from "./styles/SignupStyles";
+import {
+  FormSection,
+  FormSectionContent,
+  FormContent__Button,
+  LearnMoreContainer,
+  LearnMoreContainer__Link,
+  FormContainer__Footer,
+  FormContainer__FooterButtons,
+  FormContainer__NextButton,
+  FormContainer__createAccount,
+} from "../../login/signin/styles/SigninStyle";
+
 import { Helmet } from "react-helmet";
 
 export default function Signup() {
@@ -146,7 +158,6 @@ export default function Signup() {
                               type="text"
                               className="form__input input__small"
                               placeholder=" "
-                              autoFocus
                             />
                             <label for="" className="form__label input__label">
                               Last name
@@ -158,7 +169,6 @@ export default function Signup() {
                             type="text"
                             className="form__input input__small w-full email__auth"
                             placeholder=" "
-                            autoFocus
                           />
                           <label for="" className="form__label input__label">
                             Username
@@ -168,6 +178,153 @@ export default function Signup() {
                         <SpanSubtitle>
                           You can use letters, numbers & periods
                         </SpanSubtitle>
+                        <div
+                          className="identify"
+                          style={{ display: "flex", paddingTop: "14px" }}
+                        >
+                          <div
+                            class="form__div"
+                            style={{ width: "50%", marginRight: "10px" }}
+                          >
+                            <input
+                              type="text"
+                              className="form__input input__small"
+                              placeholder=" "
+                            />
+                            <label for="" className="form__label input__label">
+                              Password
+                            </label>
+                          </div>
+                          <div class="form__div" style={{ width: "50%" }}>
+                            <input
+                              type="text"
+                              className="form__input input__small"
+                              placeholder=" "
+                            />
+                            <label for="" className="form__label input__label">
+                              Confirm
+                            </label>
+                          </div>
+                        </div>
+                        <SpanSubtitle>
+                          Use 8 or more characters with a mix of letters,
+                          numbers & symbols
+                        </SpanSubtitle>
+                        <div style={{ marginTop: "-10px" }}>
+                          <div>
+                            <div>
+                              <div>
+                                <div
+                                  style={{
+                                    padding: "8px 0 0",
+                                    borderColor: "#5f6368",
+                                    display: "inline-flex",
+                                  }}
+                                >
+                                  <div
+                                    style={{
+                                      height: "24px",
+                                      display: "flex",
+                                      justifyContent: "center",
+                                      alignItems: "center",
+                                      flex: "none",
+                                      position: "relative",
+                                      width: "24px",
+                                    }}
+                                  >
+                                    <div
+                                      style={{
+                                        willChange: "unset",
+                                        display: "inline-flex",
+                                        position: "relative",
+                                        flex: "0 0 18px",
+                                        width: "18px",
+                                        height: "18px",
+                                        whiteSpace: "nowrap",
+                                        cursor: "pointer",
+                                        verticalAlign: "bottom",
+                                        padding: "calc((40px - 18px)/2)",
+                                      }}
+                                    >
+                                      <input
+                                        type="checkbox"
+                                        id="input"
+                                        style={{
+                                          position: "absolute",
+                                          padding: "0",
+                                          margin: "0",
+                                          cursor: "inherit",
+                                          width: "18px",
+                                          height: "18px",
+                                          border: "2px solid #5f6368",
+                                          borderRadius: "2px",
+                                          top: "0",
+                                          left: "0",
+                                        }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div
+                                    style={{
+                                      padding: "0",
+                                      display: "flex",
+                                      flex: "0 1 auto",
+                                      flexDirection: "column",
+                                      justifyContent: "center",
+                                      marginLeft: "16px",
+                                      alignItems: "flex-start",
+                                      width: "100%",
+                                    }}
+                                  >
+                                    <div
+                                      style={{
+                                        maxWidth: "100%",
+                                        paddingTop: "0",
+                                        paddingBottom: "0",
+                                      }}
+                                    >
+                                      <label htmlFor="input">
+                                        <div style={{ cursor: "pointer" }}>
+                                          Show password
+                                        </div>
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <FormContainer__Footer style={{ marginTop: "50px" }}>
+                          <FormContainer__FooterButtons>
+                            <div
+                              style={{
+                                textAlign: "right",
+                                flexGrow: "1",
+                              }}
+                            >
+                              <div>
+                                <div>
+                                  <FormContainer__NextButton type="submit">
+                                    Next
+                                  </FormContainer__NextButton>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              style={{
+                                textAlign: "right",
+                                flexGrow: "1",
+                              }}
+                            >
+                              <div>
+                                <FormContainer__createAccount>
+                                  Sign in instead
+                                </FormContainer__createAccount>
+                              </div>
+                            </div>
+                          </FormContainer__FooterButtons>
+                        </FormContainer__Footer>
                       </form>
                     </div>
                   </div>

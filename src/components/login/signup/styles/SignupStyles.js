@@ -190,6 +190,9 @@ export const SpanSubtitle = styled.span`
   top: -10px;
   position: relative;
   font-size: 12px;
+  text-align: left;
+  direction: ltr;
+  display: flex;
 `;
 
 export const SecondChild__Container = styled.div`
