@@ -22,7 +22,6 @@ import {
 } from "../../styles/SigninStyle";
 
 export default function SigninFirstPage({ setFirstPage, setUser }) {
-  // const [showModal, setShowModal] = useState(false);
   return (
     <>
       <Container>
