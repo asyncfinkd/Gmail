@@ -133,3 +133,9 @@ body {
     padding: 0 16px !important;
   }
 }
+
+@media (max-width: 600px) {
+  .btn__tryagain {
+    top: 25% !important;
+  }
+}
