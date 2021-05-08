@@ -176,3 +176,18 @@ body {
   font-weight: 500 !important;
   z-index: 10 !important;
 }
+
+.mt-3 {
+  margin-top: 0.7rem;
+}
+
+.input__span {
+  position: absolute;
+  right: 10px;
+  user-select: none;
+  top: 8px;
+}
+
+.email__auth {
+  padding-right: 100px !important;
+}

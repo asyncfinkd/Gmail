@@ -13,6 +13,12 @@ import {
   Validation__HeaderSubText,
   Form__Container,
   Form__Content,
+  SpanSubtitle,
+  SecondChild__Container,
+  SecondChild__Content,
+  SecondChild__Figure,
+  SecondChild__Image,
+  SecondChild__FigCaption,
 } from "./styles/SignupStyles";
 import { Helmet } from "react-helmet";
 
@@ -147,17 +153,21 @@ export default function Signup() {
                             </label>
                           </div>
                         </div>
-                        <div class="form__div">
+                        <div class="form__div mt-3">
                           <input
                             type="text"
-                            className="form__input input__small w-full"
+                            className="form__input input__small w-full email__auth"
                             placeholder=" "
                             autoFocus
                           />
                           <label for="" className="form__label input__label">
                             Username
                           </label>
+                          <span className="input__span">@gmail.com</span>
                         </div>
+                        <SpanSubtitle>
+                          You can use letters, numbers & periods
+                        </SpanSubtitle>
                       </form>
                     </div>
                   </div>
@@ -165,6 +175,16 @@ export default function Signup() {
               </Form__Container>
             </Validation__Container>
             {/* second child */}
+            <SecondChild__Container>
+              <SecondChild__Content>
+                <SecondChild__Figure>
+                  <SecondChild__Image src="https://ssl.gstatic.com/accounts/signup/glif/account.svg" />
+                  <SecondChild__FigCaption>
+                    One account. All of Google working for you.
+                  </SecondChild__FigCaption>
+                </SecondChild__Figure>
+              </SecondChild__Content>
+            </SecondChild__Container>
           </Hero>
         </Content>
       </Container>

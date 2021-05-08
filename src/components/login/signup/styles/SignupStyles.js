@@ -42,6 +42,9 @@ export const Content = styled.div`
     min-height: 0;
     -webkit-transition: 0.2s;
     transition: 0.2s;
+  }
+
+  @media (max-width: 901px) {
     width: 450px;
   }
 
@@ -106,6 +109,7 @@ export const Validation__Container = styled.div`
     margin: 0 -48px;
     overflow: hidden;
     padding: 0 48px;
+    width: 460px;
   }
 `;
 
@@ -176,4 +180,50 @@ export const Form__Content = styled.div`
     border-left-width: 40px;
     border-right-width: 40px;
   }
+`;
+
+export const SpanSubtitle = styled.span`
+  color: #5f6368;
+  margin-left: 10px;
+  padding-top: 4px;
+  user-select: none;
+  top: -10px;
+  position: relative;
+  font-size: 12px;
+`;
+
+export const SecondChild__Container = styled.div`
+  display: none;
+
+  @media (min-width: 901px) {
+    width: 300px;
+    padding-left: 48px;
+    flex-shrink: 0;
+    display: flex !important;
+  }
+`;
+
+export const SecondChild__Content = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+`;
+
+export const SecondChild__Figure = styled.figure`
+  margin: 72px 4px 0;
+  text-align: center;
+`;
+
+export const SecondChild__Image = styled.img`
+  height: 244px;
+  width: 244px;
+  aspect-ratio: auto 244 / 244;
+  max-width: 100%;
+`;
+
+export const SecondChild__FigCaption = styled.figcaption`
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
 `;
