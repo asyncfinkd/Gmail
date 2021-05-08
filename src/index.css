@@ -12,12 +12,9 @@
 }
 
 :root {
-  /*===== Colores =====*/
   --first-color: #1a73e8;
   --input-color: #80868b;
   --border-color: #dadce0;
-
-  /*===== Fuente y tipografia =====*/
   --body-font: "Roboto", sans-serif;
   --normal-font-size: 1rem;
   --small-font-size: 0.75rem;
@@ -175,4 +172,46 @@ body {
   font-size: 11px !important;
   font-weight: 500 !important;
   z-index: 10 !important;
+}
+
+.mt-3 {
+  margin-top: 0.7rem;
+}
+
+.input__span {
+  position: absolute;
+  right: 10px;
+  user-select: none;
+  top: 8px;
+}
+
+.email__auth {
+  padding-right: 100px !important;
+}
+
+@media (min-width: 601px) {
+  .flex {
+    display: flex;
+  }
+  .width\:50 {
+    width: 50%;
+  }
+}
+
+@media (max-width: 601px) {
+  .width\:50 {
+    margin-right: 0px !important;
+    margin-top: 10px !important;
+  }
+  .input\:width\:full {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .form__responsive__component {
+    margin-top: -1rem !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
 }
