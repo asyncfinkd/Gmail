@@ -11,6 +11,7 @@ import {
   FormContainer__createAccount,
 } from "../../../styles/SigninStyle";
 import db from "../../../../../lib/firebase.prod";
+import { useHistory } from "react-router-dom";
 
 export default function SigninForm({ setUser, setFirstPage }) {
   const [emailOrPhone, setEmailOrPhone] = useState("");
@@ -18,6 +19,7 @@ export default function SigninForm({ setUser, setFirstPage }) {
   const [notFound, setNotFound] = useState(false);
   const EmailOrPhoneRef = useRef();
   const [showModal, setShowModal] = useState(false);
+  const history = useHistory();
 
   const identification = () => {
     if (!emailOrPhone) {
@@ -231,6 +233,9 @@ export default function SigninForm({ setUser, setFirstPage }) {
                                     >
                                       <span
                                         className="hover"
+                                        onClick={() => {
+                                          history.push("/signup/v2");
+                                        }}
                                         style={{
                                           color: "#222",
                                           cursor: "pointer",
