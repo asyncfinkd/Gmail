@@ -28,7 +28,12 @@ import {
 } from "./styles/SigninSecondPageStyle";
 import SigninSecondForm from "./form/SigninSecondForm";
 
-export default function SigninSecondPage({ gmail, name, closeSecondPage }) {
+export default function SigninSecondPage({
+  gmail,
+  name,
+  closeSecondPage,
+  userPassword,
+}) {
   return (
     <>
       <Container>
@@ -122,7 +127,7 @@ export default function SigninSecondPage({ gmail, name, closeSecondPage }) {
                       <FormContent role="presentation">
                         <div>
                           <div>
-                            <SigninSecondForm />
+                            <SigninSecondForm userPassword={userPassword} />
                             {/* Enter your password */}
                           </div>
                         </div>

@@ -17,6 +17,7 @@ export default function SigninForm({ setUser, setFirstPage }) {
   const [emailOrPhoneError, setEmailOrPhoneError] = useState(false);
   const [notFound, setNotFound] = useState(false);
   const EmailOrPhoneRef = useRef();
+  const [showModal, setShowModal] = useState(false);
 
   const identification = () => {
     if (!emailOrPhone) {
@@ -185,8 +186,121 @@ export default function SigninForm({ setUser, setFirstPage }) {
                           }}
                         >
                           <div>
-                            <FormContainer__createAccount>
+                            <FormContainer__createAccount
+                              onClick={() => setShowModal(!showModal)}
+                            >
                               Create account
+                              {showModal && (
+                                <div
+                                  class="modal__popup"
+                                  style={{
+                                    color: "#202124",
+                                    background: "#fff",
+                                    maxWidth: "256px",
+                                    maxHeight: "112px",
+                                    borderRadius: "2px",
+                                    opacity: "1",
+                                    outline: "1px solid transparent",
+                                    zIndex: "2000",
+                                    boxShadow:
+                                      "0 8px 10px 1px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%), 0 5px 5px -3px rgb(0 0 0 / 20%)",
+                                    transition:
+                                      "left .2s  cubic-bezier(0.0,0.0,0.2,1) ,max-width .2s  cubic-bezier(0.0,0.0,0.2,1) ,max-height .2s  cubic-bezier(0.0,0.0,0.2,1) ,opacity .05s linear,top .2s cubic-bezier(0.0,0.0,0.2,1)",
+                                    position: "fixed",
+                                    marginTop: "10px",
+                                  }}
+                                >
+                                  <div
+                                    className="modal__popup"
+                                    style={{
+                                      maxWidth: "256px",
+                                      maxHeight: "112px",
+                                      overflowX: "hidden",
+                                      overflowY: "auto",
+                                    }}
+                                  >
+                                    <div
+                                      className="modal__resp"
+                                      style={{
+                                        width: "256px",
+                                        height: "auto",
+                                        minWidth: "256px",
+                                        float: "left",
+                                        padding: "16px 0",
+                                      }}
+                                    >
+                                      <span
+                                        className="hover"
+                                        style={{
+                                          color: "#222",
+                                          cursor: "pointer",
+                                          display: "block",
+                                          outline: "none",
+                                          overflow: "hidden",
+                                          padding: "0 24px",
+                                          position: "relative",
+                                        }}
+                                      >
+                                        <div
+                                          style={{
+                                            color: "#202124",
+                                            display: "flex",
+                                            fontSize: "14px",
+                                            fontWeight: "400",
+                                            lineHeight: "40px",
+                                            height: "40px",
+                                            position: "relative",
+                                            whiteSpace: "nowrap",
+                                          }}
+                                        >
+                                          <div
+                                            style={{
+                                              minWidth: "0",
+                                              flexGrow: "1",
+                                            }}
+                                          >
+                                            For myself
+                                          </div>
+                                        </div>
+                                      </span>
+                                      <span
+                                        className="hover"
+                                        style={{
+                                          color: "#222",
+                                          cursor: "pointer",
+                                          display: "block",
+                                          outline: "none",
+                                          overflow: "hidden",
+                                          padding: "0 24px",
+                                          position: "relative",
+                                        }}
+                                      >
+                                        <div
+                                          style={{
+                                            color: "#202124",
+                                            display: "flex",
+                                            fontSize: "14px",
+                                            fontWeight: "400",
+                                            lineHeight: "40px",
+                                            height: "40px",
+                                            position: "relative",
+                                            whiteSpace: "nowrap",
+                                          }}
+                                        >
+                                          <div
+                                            style={{
+                                              minWidth: "0",
+                                              flexGrow: "1",
+                                            }}
+                                          >
+                                            To manage my business
+                                          </div>
+                                        </div>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
                             </FormContainer__createAccount>
                           </div>
                         </div>
@@ -195,7 +309,6 @@ export default function SigninForm({ setUser, setFirstPage }) {
                   </span>
                 </div>
               </div>
-              {/* chance */}
             </FormSectionContent>
           </FormSection>
         </span>
