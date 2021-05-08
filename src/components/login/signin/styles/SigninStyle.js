@@ -316,6 +316,7 @@ export const FormContainer__createAccount = styled.div`
   outline: none;
   cursor: pointer;
   text-transform: none;
+  position: relative;
 `;
 
 export const FooterContainer__footer = styled.footer`

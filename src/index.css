@@ -111,3 +111,24 @@ body {
   padding-bottom: 3px;
   padding-top: 14px;
 }
+
+.hover:hover {
+  background-color: #eee;
+}
+
+@media (max-width: 840px) {
+  .modal__popup {
+    max-width: 192px !important;
+    max-height: 96px !important;
+    overflow-y: hidden !important;
+  }
+  .modal__resp {
+    width: 192px !important;
+    height: auto !important;
+    min-width: 192px !important;
+    padding: 8px 0 !important;
+  }
+  .modal__resp span {
+    padding: 0 16px !important;
+  }
+}
