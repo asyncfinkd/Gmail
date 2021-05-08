@@ -39,6 +39,7 @@ body {
   height: 48px;
   max-width: 100%;
 }
+
 .form__input {
   position: absolute;
   top: 0;
@@ -140,23 +141,38 @@ body {
   }
 }
 
-.signup__form__input {
-  width: 200px;
-  height: 36px;
-}
-
-.signup__form__label {
-  top: 0.5rem !important;
-  font-size: 14px !important;
-}
-
-.signup__form__input:focus + .signup__form__label {
-  top: -0.4rem !important;
-  font-size: 11px !important;
-  left: 0.25rem !important;
-}
-
 .identify:first-child {
   margin-top: 0;
   padding-top: 0;
+}
+
+.input__small {
+  width: 200px !important;
+  height: 36px !important;
+  padding-left: 0.5rem !important;
+  font-size: 14px !important;
+}
+
+.w-full {
+  width: 100% !important;
+}
+
+.input__label {
+  top: 0.5rem !important;
+  font-size: 14px !important;
+  left: 0.3rem !important;
+}
+
+.input__small:focus + .input__label {
+  top: -0.45rem !important;
+  font-size: 11px !important;
+  left: 0.3rem !important;
+}
+
+.input__small:not(:placeholder-shown).input__small:not(:focus) + .input__label {
+  top: -0.45rem !important;
+  left: 0.3rem !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  z-index: 10 !important;
 }

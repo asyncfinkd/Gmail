@@ -160,11 +160,6 @@ export const Validation__HeaderSubText = styled.div`
 export const Form__Container = styled.div`
   font-size: 0.1px;
   white-space: nowrap;
-  margin: auto -24px;
-
-  @media (min-width: 450px) {
-    margin: auto -40px;
-  }
 `;
 
 export const Form__Content = styled.div`

@@ -104,29 +104,66 @@ export default function Signup() {
                           <span>Create your Google Account</span>
                         </Validation__HeaderTitle>
                         <Validation__HeaderSubText>
-                          <span>to continue to Gmail</span>
+                          <span>Continue to Gmail</span>
                         </Validation__HeaderSubText>
                       </Validation__ContainerHeader>
                     </div>
                   </Validation__ContainerComponent>
                 </div>
               </div>
-            </Validation__Container>
-            <Form__Container>
-              <Form__Content>
-                <div>
+              <Form__Container>
+                <Form__Content>
                   <div>
-                    <form
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                      }}
-                    >
-                      <div className="identify"></div>
-                    </form>
+                    <div>
+                      <form
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                        }}
+                      >
+                        <div className="identify" style={{ display: "flex" }}>
+                          <div
+                            class="form__div"
+                            style={{ width: "50%", marginRight: "10px" }}
+                          >
+                            <input
+                              type="text"
+                              className="form__input input__small"
+                              placeholder=" "
+                              autoFocus
+                            />
+                            <label for="" className="form__label input__label">
+                              First name
+                            </label>
+                          </div>
+                          <div class="form__div" style={{ width: "50%" }}>
+                            <input
+                              type="text"
+                              className="form__input input__small"
+                              placeholder=" "
+                              autoFocus
+                            />
+                            <label for="" className="form__label input__label">
+                              Last name
+                            </label>
+                          </div>
+                        </div>
+                        <div class="form__div">
+                          <input
+                            type="text"
+                            className="form__input input__small w-full"
+                            placeholder=" "
+                            autoFocus
+                          />
+                          <label for="" className="form__label input__label">
+                            Username
+                          </label>
+                        </div>
+                      </form>
+                    </div>
                   </div>
-                </div>
-              </Form__Content>
-            </Form__Container>
+                </Form__Content>
+              </Form__Container>
+            </Validation__Container>
             {/* second child */}
           </Hero>
         </Content>
