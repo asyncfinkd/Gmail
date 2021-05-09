@@ -274,3 +274,109 @@ export const BodyLeft__ImageComponent = styled.div`
   height: 16px;
   overflow: hidden;
 `;
+
+export const BodyLeft__Buttons = styled.div`
+  display: flex;
+  align-items: flex-start;
+  flex-grow: 0;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: -8px;
+  margin-top: 26px;
+  min-height: 48px;
+  padding-bottom: 20px;
+`;
+
+export const BodyLeft__Flex = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  width: 100%;
+`;
+
+export const BodyLeft__NextButton = styled.div`
+  flex-grow: 1;
+`;
+
+export const Button__Next = styled.button`
+  color: #fff;
+  background-color: #1a73e8;
+  padding: 0 24px 0 24px;
+  font-family: "Google Sans";
+  font-size: 0.875rem;
+  letter-spacing: 0.0107142857em;
+  font-weight: 500;
+  text-transform: none;
+  transition: border 280ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: none;
+  height: 36px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  display: inline-flex;
+  align-items: center;
+  min-width: 64px;
+  border: none;
+  outline: none;
+  line-height: inherit;
+  vertical-align: middle;
+  cursor: pointer;
+  oveflow: visible;
+  appearance: none;
+`;
+
+export const Button__Back = styled.button`
+  color: #1a73e8;
+  background-color: transparent;
+  height: 36px;
+  font-weight: 500;
+  text-transform: none;
+  font-family: "Google Sans";
+  letter-spacing: 0.0107142857em;
+  padding: 0 8px 0 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  overflow: visible;
+  vertical-align: middle;
+  appearance: none;
+`;
+
+export const BodyRight__Container = styled.div`
+  display: none;
+  @media (min-width: 901px) {
+    display: flex;
+    flex-shrink: 0;
+    padding-left: 48px;
+    width: 300px;
+  }
+`;
+
+export const BodyRight__Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+`;
+
+export const BodyRight__Figure = styled.figure`
+  margin: 72px 4px 0;
+  text-align: center;
+`;
+
+export const BodyRight__Image = styled.img`
+  max-width: 100%;
+  width: 244px;
+  height: 244px;
+  aspect-ratio: auto 244 / 244;
+`;
+
+export const BodyRight__Figcaption = styled.figcaption`
+  font-size: 16px;
+  font-weight: 300;
+`;
