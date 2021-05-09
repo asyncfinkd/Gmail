@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SignupFirstPage from "./pages/first/SignupFirstPage";
+import SignupSecondPage from "./pages/second/SignupSecondPage";
 
 export default function Signup() {
   const [firstPage, setFirstPage] = useState(true);
@@ -8,7 +9,7 @@ export default function Signup() {
       {firstPage ? (
         <SignupFirstPage setFirstPage={setFirstPage} />
       ) : (
-        <p>Hello</p>
+        <SignupSecondPage />
       )}
     </>
   );
