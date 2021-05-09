@@ -9,7 +9,7 @@ export default function Signup() {
       {firstPage ? (
         <SignupFirstPage setFirstPage={setFirstPage} />
       ) : (
-        <SignupSecondPage />
+        <SignupSecondPage back={() => setFirstPage(true)} />
       )}
     </>
   );

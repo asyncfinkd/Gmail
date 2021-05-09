@@ -22,11 +22,26 @@ import {
   BodyLeft__ValidationFirstContentSelect,
   BodyLeft__ValidationSelect,
   BodyLeft__ImageComponent,
+  BodyLeft__Buttons,
+  BodyLeft__Flex,
+  BodyLeft__NextButton,
+  Button__Next,
+  Button__Back,
+  BodyRight__Container,
+  BodyRight__Content,
+  BodyRight__Figure,
+  BodyRight__Image,
+  BodyRight__Figcaption,
 } from "./styles/SignupSecondPageStyles";
+import {
+  FooterContainer__footer,
+  FooterContainer__footerContent,
+  FooterContainer__footerContentUL,
+} from "../../../../login/signin/styles/SigninStyle";
 import { Language } from "./fixtures/languages";
 import SignupSecondPageMap from "./map/SignupSecondPageMap";
 
-export default function SignupSecondPage() {
+export default function SignupSecondPage({ back }) {
   const [showPopup, setShowPopup] = useState(false);
   const [position, setPosition] = useState("-1px -1123px");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -249,10 +264,67 @@ export default function SignupSecondPage() {
                   </BodyLeft__CenterHeader>
                 </BodyLeft__CenterContent>
               </BodyLeft__CenterContainer>
+              <BodyLeft__Buttons>
+                <BodyLeft__Flex>
+                  <BodyLeft__NextButton>
+                    <div style={{ display: "inlin-block", textAlign: "right" }}>
+                      <div style={{ display: "inline", textAlign: "right" }}>
+                        <Button__Next>Next</Button__Next>
+                      </div>
+                    </div>
+                  </BodyLeft__NextButton>
+                  <div style={{ flexGrow: "1" }}>
+                    <div style={{ textAlign: "left", display: "inline-block" }}>
+                      <div style={{ display: "inline" }}>
+                        <Button__Back onClick={back}>Back</Button__Back>
+                      </div>
+                    </div>
+                  </div>
+                </BodyLeft__Flex>
+              </BodyLeft__Buttons>
             </BodyLeft__Container>
-            {/* child component */}
-            <div></div>
+            <BodyRight__Container>
+              <BodyRight__Content>
+                <BodyRight__Figure>
+                  <BodyRight__Image src="https://ssl.gstatic.com/accounts/signup/glif/personal.svg" />
+                  <BodyRight__Figcaption>
+                    Your personal info is private and safe
+                  </BodyRight__Figcaption>
+                </BodyRight__Figure>
+              </BodyRight__Content>
+            </BodyRight__Container>
           </BodyContent>
+          <FooterContainer__footer>
+            <FooterContainer__footerContent>
+              English (United Kingdom)
+            </FooterContainer__footerContent>
+            <FooterContainer__footerContentUL>
+              <li>
+                <a
+                  href="https://support.google.com/accounts?hl=en-GB"
+                  target="_blank"
+                >
+                  Help
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://accounts.google.com/TOS?loc=GE&amp;hl=en-GB&amp;privacy=true"
+                  target="_blank"
+                >
+                  Privacy
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://accounts.google.com/TOS?loc=GE&amp;hl=en-GB"
+                  target="_blank"
+                >
+                  Terms
+                </a>
+              </li>
+            </FooterContainer__footerContentUL>
+          </FooterContainer__footer>
         </BodyContainer>
       </Body>
     </>
