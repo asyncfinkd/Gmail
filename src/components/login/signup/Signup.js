@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import {
   Container,
   Content,
@@ -34,6 +34,79 @@ import { Helmet } from "react-helmet";
 
 export default function Signup() {
   const history = useHistory();
+  const [firstName, setFirstName] = useState("");
+  const [firstNameError, setFirstNameError] = useState(false);
+  const firstNameRef = useRef();
+  const [lastName, setLastName] = useState("");
+  const [lastNameError, setLastNameError] = useState(false);
+  const lastNameRef = useRef();
+  const [gmail, setGmail] = useState("");
+  const gmailRef = useRef();
+  const [gmailError, setGmailError] = useState(false);
+  const [gmailSecondError, setGmailSecondError] = useState(false);
+  const [password, setPassword] = useState("");
+  const passwordRef = useRef();
+  const [passwordError, setPasswordError] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const confirmPasswordRef = useRef();
+
+  const identification = () => {
+    if (!firstName) {
+      setFirstNameError(true);
+      setPasswordError(false);
+      setGmailSecondError(false);
+      setLastNameError(false);
+      setConfirmPassword(false);
+      setGmailError(false);
+      firstNameRef.current.focus();
+    } else if (!lastName) {
+      setLastNameError(true);
+      setGmailSecondError(false);
+      setFirstNameError(false);
+      setPasswordError(false);
+      setConfirmPassword(false);
+      setGmailError(false);
+      lastNameRef.current.focus();
+    } else if (!gmail) {
+      setLastNameError(false);
+      setConfirmPassword(false);
+      setFirstNameError(false);
+      setGmailError(true);
+      setGmailSecondError(false);
+      setPasswordError(false);
+      gmailRef.current.focus();
+    } else if (gmail.length < 6) {
+      setGmailSecondError(true);
+      setGmailError(false);
+      setConfirmPassword(false);
+      setFirstNameError(false);
+      gmailRef.current.focus();
+      setPasswordError(false);
+      setLastNameError(false);
+    } else if (!password) {
+      setLastNameError(false);
+      setFirstNameError(false);
+      setGmailSecondError(false);
+      setConfirmPassword(false);
+      setGmailError(false);
+      setPasswordError(true);
+      passwordRef.current.focus();
+    } else if (!confirmPassword) {
+      setConfirmPassword(true);
+      setGmailSecondError(false);
+      setGmailError(false);
+      setFirstNameError(false);
+      setPasswordError(false);
+      setLastNameError(false);
+    } else {
+      setGmailSecondError(false);
+      setGmailError(false);
+      setFirstNameError(false);
+      setPasswordError(false);
+      setConfirmPassword(false);
+      setLastNameError(false);
+    }
+  };
   return (
     <>
       <Helmet>
@@ -139,39 +212,188 @@ export default function Signup() {
                           >
                             <input
                               type="text"
-                              className="form__input input__small input:width:full"
+                              className={
+                                firstNameError
+                                  ? "form__input input__small input:width:full error__input"
+                                  : "form__input input__small input:width:full"
+                              }
                               placeholder=" "
+                              value={firstName}
+                              onChange={(e) => setFirstName(e.target.value)}
+                              ref={firstNameRef}
                               autoFocus
                             />
-                            <label for="" className="form__label input__label">
+                            <label
+                              for=""
+                              className={
+                                firstNameError
+                                  ? "form__label input__label error__label"
+                                  : "form__label input__label"
+                              }
+                            >
                               First name
                             </label>
                           </div>
                           <div class="form__div width:50">
                             <input
                               type="text"
-                              className="form__input input__small input:width:full"
+                              className={
+                                lastNameError
+                                  ? "form__input input__small input:width:full error__input"
+                                  : "form__input input__small input:width:full"
+                              }
                               placeholder=" "
+                              value={lastName}
+                              ref={lastNameRef}
+                              onChange={(e) => setLastName(e.target.value)}
                             />
-                            <label for="" className="form__label input__label">
+                            <label
+                              for=""
+                              className={
+                                lastNameError
+                                  ? "form__label input__label error__label"
+                                  : "form__label input__label"
+                              }
+                            >
                               Last name
                             </label>
                           </div>
                         </div>
+                        {firstNameError && (
+                          <div
+                            style={{
+                              display: "flex",
+                              color: "#d93025",
+                              fontSize: "13px",
+                              textAlign: "center",
+                              marginTop: "-7px",
+                              height: "40px",
+                            }}
+                          >
+                            <svg
+                              aria-hidden="true"
+                              fill="currentColor"
+                              focusable="false"
+                              style={{ marginRight: "8px" }}
+                              width="16px"
+                              height="16px"
+                              viewBox="0 0 24 24"
+                              xmlns="https://www.w3.org/2000/svg"
+                            >
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
+                            </svg>
+                            Enter first name
+                          </div>
+                        )}
+                        {lastNameError && (
+                          <div
+                            style={{
+                              display: "flex",
+                              color: "#d93025",
+                              fontSize: "13px",
+                              textAlign: "center",
+                              marginTop: "-7px",
+                              height: "40px",
+                            }}
+                          >
+                            <svg
+                              aria-hidden="true"
+                              fill="currentColor"
+                              focusable="false"
+                              style={{ marginRight: "8px" }}
+                              width="16px"
+                              height="16px"
+                              viewBox="0 0 24 24"
+                              xmlns="https://www.w3.org/2000/svg"
+                            >
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
+                            </svg>
+                            Enter last name
+                          </div>
+                        )}
                         <div class="form__div mt-3">
                           <input
                             type="text"
-                            className="form__input input__small w-full email__auth input:width:full"
+                            className={
+                              gmailError
+                                ? "form__input input__small w-full email__auth input:width:full error__input"
+                                : "form__input input__small w-full email__auth input:width:full"
+                            }
                             placeholder=" "
+                            value={gmail}
+                            onChange={(e) => setGmail(e.target.value)}
+                            ref={gmailRef}
                           />
-                          <label for="" className="form__label input__label">
+                          <label
+                            for=""
+                            className={
+                              gmailError
+                                ? "form__label input__label error__label"
+                                : "form__label input__label"
+                            }
+                          >
                             Username
                           </label>
                           <span className="input__span">@gmail.com</span>
                         </div>
-                        <SpanSubtitle>
-                          You can use letters, numbers & periods
-                        </SpanSubtitle>
+
+                        {gmailError != true ||
+                          (gmailSecondError && (
+                            <SpanSubtitle>
+                              You can use letters, numbers & periods
+                            </SpanSubtitle>
+                          ))}
+                        {gmailError && (
+                          <div
+                            style={{
+                              display: "flex",
+                              color: "#d93025",
+                              fontSize: "13px",
+                              textAlign: "center",
+                              marginTop: "-7px",
+                            }}
+                          >
+                            <svg
+                              aria-hidden="true"
+                              fill="currentColor"
+                              focusable="false"
+                              style={{ marginRight: "8px" }}
+                              width="16px"
+                              height="16px"
+                              viewBox="0 0 24 24"
+                              xmlns="https://www.w3.org/2000/svg"
+                            >
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
+                            </svg>
+                            Choose a Gmail address
+                          </div>
+                        )}
+                        {gmailSecondError && (
+                          <div
+                            style={{
+                              display: "flex",
+                              alignItems: "flex-start",
+                              color: "#d93025",
+                              fontSize: "13px",
+                              marginTop: "-7px",
+                            }}
+                          >
+                            <svg
+                              aria-hidden="true"
+                              fill="currentColor"
+                              focusable="false"
+                              style={{ marginRight: "8px" }}
+                              width="16px"
+                              height="16px"
+                              viewBox="0 0 24 24"
+                              xmlns="https://www.w3.org/2000/svg"
+                            >
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
+                            </svg>
+                            Sorry, your username must be between 6 and 30
+                            characters long.
+                          </div>
+                        )}
                         <div
                           className="identify flex"
                           style={{ paddingTop: "14px" }}
@@ -181,29 +403,76 @@ export default function Signup() {
                             style={{ marginRight: "10px" }}
                           >
                             <input
-                              type="text"
-                              className="form__input input__small input:width:full"
+                              type="password"
+                              className={
+                                passwordError
+                                  ? "form__input input__small input:width:full error__input"
+                                  : "form__input input__small input:width:full"
+                              }
                               placeholder=" "
+                              value={password}
+                              ref={passwordRef}
+                              onChange={(e) => setPassword(e.target.value)}
                             />
-                            <label for="" className="form__label input__label">
+                            <label
+                              for=""
+                              className={
+                                passwordError
+                                  ? "form__label input__label error__label"
+                                  : "form__label input__label"
+                              }
+                            >
                               Password
                             </label>
                           </div>
                           <div class="form__div width:50">
                             <input
-                              type="text"
+                              type="password"
                               className="form__input input__small input:width:full"
                               placeholder=" "
+                              value={confirmPassword}
+                              ref={confirmPasswordRef}
+                              onChange={(e) =>
+                                setConfirmPassword(e.target.value)
+                              }
                             />
                             <label for="" className="form__label input__label">
                               Confirm
                             </label>
                           </div>
                         </div>
-                        <SpanSubtitle>
-                          Use 8 or more characters with a mix of letters,
-                          numbers & symbols
-                        </SpanSubtitle>
+                        {passwordError != true && (
+                          <SpanSubtitle>
+                            Use 8 or more characters with a mix of letters,
+                            numbers & symbols
+                          </SpanSubtitle>
+                        )}
+                        {passwordError && (
+                          <div
+                            style={{
+                              display: "flex",
+                              color: "#d93025",
+                              fontSize: "13px",
+                              textAlign: "center",
+                              marginTop: "-7px",
+                              height: "35px",
+                            }}
+                          >
+                            <svg
+                              aria-hidden="true"
+                              fill="currentColor"
+                              focusable="false"
+                              style={{ marginRight: "8px" }}
+                              width="16px"
+                              height="16px"
+                              viewBox="0 0 24 24"
+                              xmlns="https://www.w3.org/2000/svg"
+                            >
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
+                            </svg>
+                            Enter a password
+                          </div>
+                        )}
                         <div style={{ marginTop: "-10px" }}>
                           <div>
                             <div>
@@ -299,7 +568,10 @@ export default function Signup() {
                             >
                               <div>
                                 <div>
-                                  <FormContainer__NextButton type="submit">
+                                  <FormContainer__NextButton
+                                    type="submit"
+                                    onClick={() => identification()}
+                                  >
                                     Next
                                   </FormContainer__NextButton>
                                 </div>

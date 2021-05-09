@@ -10,7 +10,7 @@ import {
   FormContainer__NextButton,
   FormContainer__createAccount,
 } from "../../../styles/SigninStyle";
-import db from "../../../../../lib/firebase.prod";
+import db from "../../../../../../lib/firebase.prod";
 import { useHistory } from "react-router-dom";
 
 export default function SigninForm({ setUser, setFirstPage }) {
