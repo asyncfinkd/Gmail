@@ -178,7 +178,7 @@ export const BodyLeft__CenterHeader = styled.div`
   }
 `;
 
-export const BodyLeft__Section = styled.div`
+export const BodyLeft__Section = styled.section`
   margin: 16px 0;
   outline: none;
 
@@ -205,4 +205,72 @@ export const BodyLeft__ContentSectionDescription = styled.div`
   padding-bottom: 3px;
   padding-top: 0;
   margin-top: 0;
+`;
+
+export const BodyLeft__ValidationContainer = styled.div`
+  display: inline-flex;
+  align-items: flex-start;
+  width: 100%;
+`;
+
+export const BodyLeft__ValidationFirstContent = styled.div`
+  margin-top: 9px;
+  display: flex;
+  align-items: flex-end;
+  padding-right: 12px;
+  line-height: 16px;
+  width: 64px;
+`;
+
+export const BodyLeft__ValidationFirstContentContainer = styled.div`
+  width: 64px;
+  transition: background 0.3s;
+  border: 0;
+  border-radius: 3px;
+  color: #444;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  outline: none;
+  text-align: center;
+`;
+
+export const BodyLeft__ValidationFirstContentSelect = styled.div`
+  min-width: 340px;
+  max-height: 944px;
+  top: 32px;
+  background: #fff;
+  transition: opacity: .1s linear;
+  border: 0;
+  box-shadow: 0 8px 10px 1px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%), 0 5px 5px -3px rgb(0 0 0 / 20%);
+  outline: 1px solid transparent;
+  overflow: hidden;
+  overflow-y: auto;
+  position: fixed;
+  z-index: 2000;
+`;
+
+export const BodyLeft__ValidationSelect = styled.div`
+  height: auto;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  border-color: transparent;
+  color: #222;
+  list-style: none;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  white-space: nowrap;
+`;
+
+export const BodyLeft__ImageComponent = styled.div`
+  background: url("https://ssl.gstatic.com/i18n/flags/48x32/nobevel/66bdb7a1bbbdbf86a67de382fac49ecc/flags.png")
+    no-repeat 0 0;
+  background-size: 24px 3876px;
+  width: 24px;
+  height: 16px;
+  overflow: hidden;
 `;

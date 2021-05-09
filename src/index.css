@@ -160,13 +160,15 @@ body {
   left: 0.3rem !important;
 }
 
-.input__small:focus + .input__label {
+.input__small:focus + .input__label,
+.sm:focus + .input__label {
   top: -0.45rem !important;
   font-size: 11px !important;
   left: 0.3rem !important;
 }
 
-.input__small:not(:placeholder-shown).input__small:not(:focus) + .input__label {
+.input__small:not(:placeholder-shown).input__small:not(:focus) + .input__label,
+.sm:not(:placeholder-shown).sm:not(:focus) + .input__label {
   top: -0.45rem !important;
   left: 0.3rem !important;
   font-size: 11px !important;
@@ -214,4 +216,12 @@ body {
     padding-left: 40px !important;
     padding-right: 40px !important;
   }
+}
+
+.ho:hover {
+  background-color: #eee;
+}
+
+.sm {
+  height: 36px !important;
 }

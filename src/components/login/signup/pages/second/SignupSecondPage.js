@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Body,
   BodyContainer,
@@ -16,9 +16,20 @@ import {
   BodyLeft__Section,
   BodyLeft__ContentSection,
   BodyLeft__ContentSectionDescription,
+  BodyLeft__ValidationContainer,
+  BodyLeft__ValidationFirstContent,
+  BodyLeft__ValidationFirstContentContainer,
+  BodyLeft__ValidationFirstContentSelect,
+  BodyLeft__ValidationSelect,
+  BodyLeft__ImageComponent,
 } from "./styles/SignupSecondPageStyles";
+import { Language } from "./fixtures/languages";
+import SignupSecondPageMap from "./map/SignupSecondPageMap";
 
 export default function SignupSecondPage() {
+  const [showPopup, setShowPopup] = useState(false);
+  const [position, setPosition] = useState("-1px -1123px");
+  const [phoneNumber, setPhoneNumber] = useState("");
   return (
     <>
       <Body>
@@ -115,6 +126,120 @@ export default function SignupSecondPage() {
                                     Standard rates apply
                                   </span>
                                 </BodyLeft__ContentSectionDescription>
+                                <div
+                                  style={{
+                                    paddingBottom: "0",
+                                    marginBottom: "0",
+                                  }}
+                                >
+                                  <BodyLeft__ValidationContainer
+                                    style={{ marginTop: "15px" }}
+                                  >
+                                    {/* child */}
+                                    <BodyLeft__ValidationFirstContent>
+                                      <BodyLeft__ValidationFirstContentContainer
+                                        onClick={() => setShowPopup(!showPopup)}
+                                      >
+                                        <div role="presentation">
+                                          <div role="presentation">
+                                            <BodyLeft__ValidationSelect>
+                                              <div
+                                                style={{
+                                                  height: "24px",
+                                                  opacity: "1",
+                                                  width: "24px",
+                                                  backgroundRepeat: "no-repeat",
+                                                  left: "50%",
+                                                  transform:
+                                                    "translate(-50%, -50%)",
+                                                  position: "absolute",
+                                                  right: "auto",
+                                                  top: "50%",
+                                                  verticalAlign: "middle",
+                                                }}
+                                              >
+                                                <div
+                                                  style={{
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                    justifyContent: "center",
+                                                    width: "24px",
+                                                    height: "24px",
+                                                  }}
+                                                >
+                                                  <BodyLeft__ImageComponent
+                                                    style={{
+                                                      backgroundPosition: `${position}`,
+                                                    }}
+                                                  ></BodyLeft__ImageComponent>
+                                                </div>
+                                              </div>
+                                            </BodyLeft__ValidationSelect>
+                                          </div>
+                                        </div>
+                                        <div
+                                          style={{
+                                            top: "5px",
+                                            borderTopColor: "rgba(0,0,0,0.38)",
+                                            borderColor:
+                                              "rgba(68,68,68,0.4) transparent",
+                                            borderStyle: "solid",
+                                            borderWidth: "6px 6px 0 6px",
+                                            height: "0",
+                                            width: "0",
+                                            position: "absolute",
+                                            right: "-7px",
+                                          }}
+                                        ></div>
+                                        {showPopup && (
+                                          <BodyLeft__ValidationFirstContentSelect>
+                                            {Language.map((item) => {
+                                              return (
+                                                <>
+                                                  <SignupSecondPageMap
+                                                    item={item}
+                                                    click={setPosition}
+                                                    closeModal={setShowPopup}
+                                                  />
+                                                </>
+                                              );
+                                            })}
+                                          </BodyLeft__ValidationFirstContentSelect>
+                                        )}
+                                      </BodyLeft__ValidationFirstContentContainer>
+                                    </BodyLeft__ValidationFirstContent>
+                                    {/* child */}
+                                    <div
+                                      class="form__div"
+                                      style={{
+                                        marginRight: "10px",
+                                        width: "100%",
+                                        marginLeft: "10px",
+                                      }}
+                                    >
+                                      <input
+                                        type="text"
+                                        className="form__input sm input:width:full"
+                                        placeholder=" "
+                                        value={phoneNumber}
+                                        style={{
+                                          fontSize: "14px",
+                                          paddingLeft: "10px",
+                                        }}
+                                        onChange={(e) => {
+                                          setPhoneNumber(e.target.value);
+                                        }}
+                                        autoFocus
+                                      />
+                                      <label
+                                        for=""
+                                        className="form__label input__label"
+                                      >
+                                        Phone number
+                                      </label>
+                                    </div>
+                                  </BodyLeft__ValidationContainer>
+                                </div>
                               </div>
                             </BodyLeft__ContentSection>
                           </BodyLeft__Section>
