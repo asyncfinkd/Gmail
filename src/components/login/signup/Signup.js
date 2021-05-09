@@ -31,6 +31,7 @@ import {
 } from "../../login/signin/styles/SigninStyle";
 import { useHistory } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import db from "../../../lib/firebase.prod";
 
 export default function Signup() {
   const history = useHistory();
@@ -47,38 +48,58 @@ export default function Signup() {
   const [password, setPassword] = useState("");
   const passwordRef = useRef();
   const [passwordError, setPasswordError] = useState(false);
+  const [passwordLengthError, setPasswordLengthError] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const confirmPasswordRef = useRef();
+  const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+  const [
+    coupleFirstNameLastNameError,
+    setCoupleFirstNameLastNameError,
+  ] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [gmailThirdError, setGmailThirdError] = useState(false);
 
   const identification = () => {
     if (!firstName) {
       setFirstNameError(true);
       setPasswordError(false);
       setGmailSecondError(false);
+      setCoupleFirstNameLastNameError(false);
       setLastNameError(false);
-      setConfirmPassword(false);
+      setPasswordLengthError(false);
+      setConfirmPasswordError(false);
+      setGmailThirdError(false);
       setGmailError(false);
       firstNameRef.current.focus();
     } else if (!lastName) {
       setLastNameError(true);
       setGmailSecondError(false);
+      setCoupleFirstNameLastNameError(false);
+      setPasswordLengthError(false);
       setFirstNameError(false);
       setPasswordError(false);
-      setConfirmPassword(false);
+      setGmailThirdError(false);
+      setConfirmPasswordError(false);
       setGmailError(false);
       lastNameRef.current.focus();
     } else if (!gmail) {
       setLastNameError(false);
-      setConfirmPassword(false);
+      setConfirmPasswordError(false);
       setFirstNameError(false);
+      setCoupleFirstNameLastNameError(false);
+      setPasswordLengthError(false);
+      setGmailThirdError(false);
       setGmailError(true);
       setGmailSecondError(false);
       setPasswordError(false);
       gmailRef.current.focus();
     } else if (gmail.length < 6) {
       setGmailSecondError(true);
+      setPasswordLengthError(false);
       setGmailError(false);
-      setConfirmPassword(false);
+      setConfirmPasswordError(false);
+      setCoupleFirstNameLastNameError(false);
+      setGmailThirdError(false);
       setFirstNameError(false);
       gmailRef.current.focus();
       setPasswordError(false);
@@ -86,27 +107,72 @@ export default function Signup() {
     } else if (!password) {
       setLastNameError(false);
       setFirstNameError(false);
+      setCoupleFirstNameLastNameError(false);
+      setGmailThirdError(false);
       setGmailSecondError(false);
-      setConfirmPassword(false);
+      setPasswordLengthError(false);
+      setConfirmPasswordError(false);
       setGmailError(false);
       setPasswordError(true);
       passwordRef.current.focus();
-    } else if (!confirmPassword) {
-      setConfirmPassword(true);
+    } else if (password.length < 8) {
+      setGmailThirdError(false);
+      setPasswordLengthError(true);
       setGmailSecondError(false);
       setGmailError(false);
+      setCoupleFirstNameLastNameError(false);
       setFirstNameError(false);
       setPasswordError(false);
+      setConfirmPasswordError(false);
+      setLastNameError(false);
+      passwordRef.current.focus();
+    } else if (!confirmPassword) {
+      setConfirmPasswordError(true);
+      setPasswordLengthError(false);
+      setGmailSecondError(false);
+      setGmailError(false);
+      setGmailThirdError(false);
+      setCoupleFirstNameLastNameError(false);
+      setFirstNameError(false);
+      setPasswordError(false);
+      setLastNameError(false);
+      confirmPasswordRef.current.focus();
+    } else if (password != confirmPassword) {
+      setCoupleFirstNameLastNameError(true);
+      setGmailSecondError(false);
+      setGmailError(false);
+      setGmailThirdError(false);
+      setFirstNameError(false);
+      setPasswordError(false);
+      setPasswordLengthError(false);
+      setConfirmPasswordError(false);
       setLastNameError(false);
     } else {
       setGmailSecondError(false);
       setGmailError(false);
       setFirstNameError(false);
       setPasswordError(false);
-      setConfirmPassword(false);
+      setPasswordLengthError(false);
+      setConfirmPasswordError(false);
+      setCoupleFirstNameLastNameError(false);
+      setGmailThirdError(false);
       setLastNameError(false);
+      var x = gmail.replace("@gmail.com", "");
+      console.log(x);
+
+      db.collection("users").onSnapshot((querySnapshot) => {
+        querySnapshot.docs.map((item) => {
+          if (item.data().gmail == `${x}@gmail.com`) {
+            setGmailThirdError(true);
+          } else {
+            setGmailThirdError(false);
+            gmailRef.current.focus();
+          }
+        });
+      });
     }
   };
+
   return (
     <>
       <Helmet>
@@ -267,7 +333,7 @@ export default function Signup() {
                               fontSize: "13px",
                               textAlign: "center",
                               marginTop: "-7px",
-                              height: "40px",
+                              height: "30px",
                             }}
                           >
                             <svg
@@ -293,7 +359,7 @@ export default function Signup() {
                               fontSize: "13px",
                               textAlign: "center",
                               marginTop: "-7px",
-                              height: "40px",
+                              height: "30px",
                             }}
                           >
                             <svg
@@ -315,7 +381,7 @@ export default function Signup() {
                           <input
                             type="text"
                             className={
-                              gmailError
+                              gmailError || gmailSecondError || gmailThirdError
                                 ? "form__input input__small w-full email__auth input:width:full error__input"
                                 : "form__input input__small w-full email__auth input:width:full"
                             }
@@ -327,7 +393,7 @@ export default function Signup() {
                           <label
                             for=""
                             className={
-                              gmailError
+                              gmailError || gmailSecondError || gmailThirdError
                                 ? "form__label input__label error__label"
                                 : "form__label input__label"
                             }
@@ -337,12 +403,45 @@ export default function Signup() {
                           <span className="input__span">@gmail.com</span>
                         </div>
 
-                        {gmailError != true ||
-                          (gmailSecondError && (
-                            <SpanSubtitle>
-                              You can use letters, numbers & periods
-                            </SpanSubtitle>
-                          ))}
+                        {gmailThirdError && (
+                          <div
+                            style={{
+                              display: "flex",
+                              color: "#d93025",
+                              fontSize: "13px",
+                              textAlign: "center",
+                              marginTop: "-7px",
+                            }}
+                          >
+                            <svg
+                              aria-hidden="true"
+                              fill="currentColor"
+                              focusable="false"
+                              style={{ marginRight: "8px" }}
+                              width="16px"
+                              height="16px"
+                              viewBox="0 0 24 24"
+                              xmlns="https://www.w3.org/2000/svg"
+                            >
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
+                            </svg>
+                            That username is taken. Try another.
+                          </div>
+                        )}
+
+                        {gmailError != true && (
+                          <>
+                            {gmailSecondError != true && (
+                              <>
+                                {gmailThirdError != true && (
+                                  <SpanSubtitle>
+                                    You can use letters, numbers & periods
+                                  </SpanSubtitle>
+                                )}
+                              </>
+                            )}
+                          </>
+                        )}
                         {gmailError && (
                           <div
                             style={{
@@ -403,9 +502,11 @@ export default function Signup() {
                             style={{ marginRight: "10px" }}
                           >
                             <input
-                              type="password"
+                              type={showPassword ? "text" : "password"}
                               className={
-                                passwordError
+                                passwordError ||
+                                passwordLengthError ||
+                                coupleFirstNameLastNameError
                                   ? "form__input input__small input:width:full error__input"
                                   : "form__input input__small input:width:full"
                               }
@@ -417,7 +518,9 @@ export default function Signup() {
                             <label
                               for=""
                               className={
-                                passwordError
+                                passwordError ||
+                                coupleFirstNameLastNameError ||
+                                passwordLengthError
                                   ? "form__label input__label error__label"
                                   : "form__label input__label"
                               }
@@ -427,8 +530,13 @@ export default function Signup() {
                           </div>
                           <div class="form__div width:50">
                             <input
-                              type="password"
-                              className="form__input input__small input:width:full"
+                              type={showPassword ? "text" : "password"}
+                              className={
+                                confirmPasswordError ||
+                                coupleFirstNameLastNameError
+                                  ? "form__input input__small input:width:full error__input"
+                                  : "form__input input__small input:width:full"
+                              }
                               placeholder=" "
                               value={confirmPassword}
                               ref={confirmPasswordRef}
@@ -436,16 +544,88 @@ export default function Signup() {
                                 setConfirmPassword(e.target.value)
                               }
                             />
-                            <label for="" className="form__label input__label">
+                            <label
+                              for=""
+                              className={
+                                confirmPasswordError ||
+                                coupleFirstNameLastNameError
+                                  ? "form__label input__label error__label"
+                                  : "form__label input__label"
+                              }
+                            >
                               Confirm
                             </label>
                           </div>
                         </div>
+                        {coupleFirstNameLastNameError && (
+                          <div
+                            style={{
+                              display: "flex",
+                              color: "#d93025",
+                              fontSize: "13px",
+                              textAlign: "center",
+                              marginTop: "-7px",
+                              height: "35px",
+                            }}
+                          >
+                            <svg
+                              aria-hidden="true"
+                              fill="currentColor"
+                              focusable="false"
+                              style={{ marginRight: "8px" }}
+                              width="16px"
+                              height="16px"
+                              viewBox="0 0 24 24"
+                              xmlns="https://www.w3.org/2000/svg"
+                            >
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
+                            </svg>
+                            Those passwords didn't match. Try again.
+                          </div>
+                        )}
+                        {confirmPasswordError && (
+                          <div
+                            style={{
+                              display: "flex",
+                              color: "#d93025",
+                              fontSize: "13px",
+                              textAlign: "center",
+                              marginTop: "-7px",
+                              height: "35px",
+                            }}
+                          >
+                            <svg
+                              aria-hidden="true"
+                              fill="currentColor"
+                              focusable="false"
+                              style={{ marginRight: "8px" }}
+                              width="16px"
+                              height="16px"
+                              viewBox="0 0 24 24"
+                              xmlns="https://www.w3.org/2000/svg"
+                            >
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
+                            </svg>
+                            Enter a confirm password
+                          </div>
+                        )}
                         {passwordError != true && (
-                          <SpanSubtitle>
-                            Use 8 or more characters with a mix of letters,
-                            numbers & symbols
-                          </SpanSubtitle>
+                          <>
+                            {passwordLengthError != true && (
+                              <>
+                                {confirmPasswordError != true && (
+                                  <>
+                                    {coupleFirstNameLastNameError != true && (
+                                      <SpanSubtitle>
+                                        Use 8 or more characters with a mix of
+                                        letters, numbers & symbols
+                                      </SpanSubtitle>
+                                    )}
+                                  </>
+                                )}
+                              </>
+                            )}
+                          </>
                         )}
                         {passwordError && (
                           <div
@@ -473,6 +653,32 @@ export default function Signup() {
                             Enter a password
                           </div>
                         )}
+                        {passwordLengthError && (
+                          <div
+                            style={{
+                              display: "flex",
+                              color: "#d93025",
+                              fontSize: "13px",
+                              textAlign: "center",
+                              marginTop: "-7px",
+                              height: "35px",
+                            }}
+                          >
+                            <svg
+                              aria-hidden="true"
+                              fill="currentColor"
+                              focusable="false"
+                              style={{ marginRight: "8px" }}
+                              width="16px"
+                              height="16px"
+                              viewBox="0 0 24 24"
+                              xmlns="https://www.w3.org/2000/svg"
+                            >
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
+                            </svg>
+                            Use 8 characters or more for you password
+                          </div>
+                        )}
                         <div style={{ marginTop: "-10px" }}>
                           <div>
                             <div>
@@ -494,6 +700,9 @@ export default function Signup() {
                                       position: "relative",
                                       width: "24px",
                                     }}
+                                    onClick={() =>
+                                      setShowPassword(!showPassword)
+                                    }
                                   >
                                     <div
                                       style={{
