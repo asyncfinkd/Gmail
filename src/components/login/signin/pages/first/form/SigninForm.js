@@ -195,121 +195,137 @@ export default function SigninForm({ setUser, setFirstPage }) {
                             >
                               Create account
                               {showModal && (
-                                <motion.div
-                                  class="modal__popup"
-                                  style={{
-                                    color: "#202124",
-                                    background: "#fff",
-                                    maxWidth: "256px",
-                                    maxHeight: "112px",
-                                    borderRadius: "2px",
-                                    opacity: "1",
-                                    outline: "1px solid transparent",
-                                    zIndex: "2000",
-                                    boxShadow:
-                                      "0 8px 10px 1px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%), 0 5px 5px -3px rgb(0 0 0 / 20%)",
-                                    transition:
-                                      "left .2s  cubic-bezier(0.0,0.0,0.2,1) ,max-width .2s  cubic-bezier(0.0,0.0,0.2,1) ,max-height .2s  cubic-bezier(0.0,0.0,0.2,1) ,opacity .05s linear,top .2s cubic-bezier(0.0,0.0,0.2,1)",
-                                    position: "fixed",
-                                    marginTop: "10px",
-                                  }}
-                                  transition={{ duration: 0.3 }}
-                                  initial={{ y: -10, opacity: 0 }}
-                                  animate={{ y: 0, opacity: 1 }}
-                                >
+                                <>
                                   <div
-                                    className="modal__popup"
                                     style={{
+                                      backgroundColor: "transparent",
+                                      width: "100%",
+                                      height: "100vh",
+                                      position: "fixed",
+                                      top: "0",
+                                      left: "0",
+                                      cursor: "auto",
+                                    }}
+                                    onClick={() => {
+                                      setShowModal(!showModal);
+                                    }}
+                                  ></div>
+                                  <motion.div
+                                    class="modal__popup"
+                                    style={{
+                                      color: "#202124",
+                                      background: "#fff",
                                       maxWidth: "256px",
                                       maxHeight: "112px",
-                                      overflowX: "hidden",
-                                      overflowY: "auto",
+                                      borderRadius: "2px",
+                                      opacity: "1",
+                                      outline: "1px solid transparent",
+                                      zIndex: "2000",
+                                      boxShadow:
+                                        "0 8px 10px 1px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%), 0 5px 5px -3px rgb(0 0 0 / 20%)",
+                                      transition:
+                                        "left .2s  cubic-bezier(0.0,0.0,0.2,1) ,max-width .2s  cubic-bezier(0.0,0.0,0.2,1) ,max-height .2s  cubic-bezier(0.0,0.0,0.2,1) ,opacity .05s linear,top .2s cubic-bezier(0.0,0.0,0.2,1)",
+                                      position: "fixed",
+                                      marginTop: "10px",
                                     }}
+                                    transition={{ duration: 0.3 }}
+                                    initial={{ y: -10, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
                                   >
                                     <div
-                                      className="modal__resp"
+                                      className="modal__popup"
                                       style={{
-                                        width: "256px",
-                                        height: "auto",
-                                        minWidth: "256px",
-                                        float: "left",
-                                        padding: "16px 0",
+                                        maxWidth: "256px",
+                                        maxHeight: "112px",
+                                        overflowX: "hidden",
+                                        overflowY: "auto",
                                       }}
                                     >
-                                      <span
-                                        className="hover"
-                                        onClick={() => {
-                                          history.push("/signup/v2");
-                                        }}
+                                      <div
+                                        className="modal__resp"
                                         style={{
-                                          color: "#222",
-                                          cursor: "pointer",
-                                          display: "block",
-                                          outline: "none",
-                                          overflow: "hidden",
-                                          padding: "0 24px",
-                                          position: "relative",
+                                          width: "256px",
+                                          height: "auto",
+                                          minWidth: "256px",
+                                          float: "left",
+                                          padding: "16px 0",
                                         }}
                                       >
-                                        <div
+                                        <span
+                                          className="hover"
+                                          onClick={() => {
+                                            history.push("/signup/v2");
+                                          }}
                                           style={{
-                                            color: "#202124",
-                                            display: "flex",
-                                            fontSize: "14px",
-                                            fontWeight: "400",
-                                            lineHeight: "40px",
-                                            height: "40px",
+                                            color: "#222",
+                                            cursor: "pointer",
+                                            display: "block",
+                                            outline: "none",
+                                            overflow: "hidden",
+                                            padding: "0 24px",
                                             position: "relative",
-                                            whiteSpace: "nowrap",
                                           }}
                                         >
                                           <div
                                             style={{
-                                              minWidth: "0",
-                                              flexGrow: "1",
+                                              color: "#202124",
+                                              display: "flex",
+                                              fontSize: "14px",
+                                              fontWeight: "400",
+                                              lineHeight: "40px",
+                                              height: "40px",
+                                              position: "relative",
+                                              whiteSpace: "nowrap",
                                             }}
                                           >
-                                            For myself
+                                            <div
+                                              style={{
+                                                minWidth: "0",
+                                                flexGrow: "1",
+                                              }}
+                                            >
+                                              For myself
+                                            </div>
                                           </div>
-                                        </div>
-                                      </span>
-                                      <span
-                                        className="hover"
-                                        style={{
-                                          color: "#222",
-                                          cursor: "pointer",
-                                          display: "block",
-                                          outline: "none",
-                                          overflow: "hidden",
-                                          padding: "0 24px",
-                                          position: "relative",
-                                        }}
-                                      >
-                                        <div
+                                        </span>
+                                        <span
+                                          className="hover"
                                           style={{
-                                            color: "#202124",
-                                            display: "flex",
-                                            fontSize: "14px",
-                                            fontWeight: "400",
-                                            lineHeight: "40px",
-                                            height: "40px",
+                                            color: "#222",
+                                            cursor: "pointer",
+                                            display: "block",
+                                            outline: "none",
+                                            overflow: "hidden",
+                                            padding: "0 24px",
                                             position: "relative",
-                                            whiteSpace: "nowrap",
                                           }}
                                         >
                                           <div
                                             style={{
-                                              minWidth: "0",
-                                              flexGrow: "1",
+                                              color: "#202124",
+                                              display: "flex",
+                                              fontSize: "14px",
+                                              fontWeight: "400",
+                                              lineHeight: "40px",
+                                              height: "40px",
+                                              position: "relative",
+                                              whiteSpace: "nowrap",
                                             }}
                                           >
-                                            To manage my business
+                                            <div
+                                              style={{
+                                                minWidth: "0",
+                                                flexGrow: "1",
+                                              }}
+                                            >
+                                              To manage my business
+                                            </div>
                                           </div>
-                                        </div>
-                                      </span>
+                                        </span>
+                                      </div>
                                     </div>
-                                  </div>
-                                </motion.div>
+                                  </motion.div>
+                                </>
                               )}
                             </FormContainer__createAccount>
                           </div>

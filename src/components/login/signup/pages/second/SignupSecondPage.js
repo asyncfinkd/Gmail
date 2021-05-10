@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   Body,
   BodyContainer,
@@ -217,19 +217,35 @@ export default function SignupSecondPage({ back }) {
                                           }}
                                         ></div>
                                         {showPopup && (
-                                          <BodyLeft__ValidationFirstContentSelect>
-                                            {Language.map((item) => {
-                                              return (
-                                                <>
-                                                  <SignupSecondPageMap
-                                                    item={item}
-                                                    click={setPosition}
-                                                    closeModal={setShowPopup}
-                                                  />
-                                                </>
-                                              );
-                                            })}
-                                          </BodyLeft__ValidationFirstContentSelect>
+                                          <>
+                                            <div
+                                              style={{
+                                                backgroundColor: "transparent",
+                                                width: "100%",
+                                                height: "100vh",
+                                                position: "fixed",
+                                                top: "0",
+                                                left: "0",
+                                                cursor: "auto",
+                                              }}
+                                              onClick={() => {
+                                                setShowPopup(!showPopup);
+                                              }}
+                                            ></div>
+                                            <BodyLeft__ValidationFirstContentSelect>
+                                              {Language.map((item) => {
+                                                return (
+                                                  <>
+                                                    <SignupSecondPageMap
+                                                      item={item}
+                                                      click={setPosition}
+                                                      closeModal={setShowPopup}
+                                                    />
+                                                  </>
+                                                );
+                                              })}
+                                            </BodyLeft__ValidationFirstContentSelect>
+                                          </>
                                         )}
                                       </BodyLeft__ValidationFirstContentContainer>
                                     </BodyLeft__ValidationFirstContent>
