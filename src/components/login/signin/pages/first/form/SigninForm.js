@@ -27,10 +27,11 @@ export default function SigninForm({ setUser, setFirstPage }) {
       EmailOrPhoneRef.current.focus();
       setNotFound(false);
     } else {
+      var x = emailOrPhone.replace("@gmail.com", "");
       setEmailOrPhoneError(false);
       db.collection("users").onSnapshot((querySnapshot) => {
         querySnapshot.docs.map((user) => {
-          if (user.data().gmail == emailOrPhone) {
+          if (user.data().gmail == `${x}@gmail.com`) {
             setUser(user.data());
             setFirstPage(false);
             setNotFound(false);

@@ -171,7 +171,7 @@ export default function SigninSecondPage({
                             <User__Container onClick={closeSecondPage}>
                               <UserContainer__ImageContainer>
                                 <UserContainer__ImageContent>
-                                  <UserContainer__Image src="https://lh3.googleusercontent.com/-CfjDY52G0gE/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclr8_aOMTBXFpXtw7u09oVyuMlL1w/s128-c/photo.jpg"></UserContainer__Image>
+                                  <UserContainer__Image src="https://lh3.googleusercontent.com/-CfjDY52G0gE/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclr8_aOMTBXFpXtw7u09oVyuMlL1w/s128-c/photo.jpg" />
                                 </UserContainer__ImageContent>
                               </UserContainer__ImageContainer>
                               <ProfileIdentifier>{gmail}</ProfileIdentifier>
