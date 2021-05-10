@@ -12,6 +12,7 @@ import {
 } from "../../../styles/SigninStyle";
 import db from "../../../../../../lib/firebase.prod";
 import { useHistory } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function SigninForm({ setUser, setFirstPage }) {
   const [emailOrPhone, setEmailOrPhone] = useState("");
@@ -194,7 +195,7 @@ export default function SigninForm({ setUser, setFirstPage }) {
                             >
                               Create account
                               {showModal && (
-                                <div
+                                <motion.div
                                   class="modal__popup"
                                   style={{
                                     color: "#202124",
@@ -212,6 +213,9 @@ export default function SigninForm({ setUser, setFirstPage }) {
                                     position: "fixed",
                                     marginTop: "10px",
                                   }}
+                                  transition={{ duration: 0.3 }}
+                                  initial={{ y: -10, opacity: 0 }}
+                                  animate={{ y: 0, opacity: 1 }}
                                 >
                                   <div
                                     className="modal__popup"
@@ -305,7 +309,7 @@ export default function SigninForm({ setUser, setFirstPage }) {
                                       </span>
                                     </div>
                                   </div>
-                                </div>
+                                </motion.div>
                               )}
                             </FormContainer__createAccount>
                           </div>
