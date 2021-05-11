@@ -1,4 +1,4 @@
-# Contributing to Google
+# Contributing to Gmail
 
 We love the activism, the contribution of the people. You can taste it. Will it be:
 
