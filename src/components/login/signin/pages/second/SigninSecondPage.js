@@ -23,8 +23,11 @@ import {
   UserContainer__ImageContainer,
   UserContainer__ImageContent,
   User__Container,
+  NotSigned__MessageContainer,
+  NotSigned__MessageButton,
 } from "./styles/SigninSecondPageStyle";
 import SigninSecondForm from "./form/SigninSecondForm";
+import { FooterMap } from "../../../../../map/signin/secondPage/SigninSecondPageMap";
 
 export default function SigninSecondPage({
   gmail,
@@ -104,50 +107,18 @@ export default function SigninSecondPage({
                           <h1>
                             <span>You're not signed in</span>
                           </h1>
-                          <div
-                            style={{
-                              color: "#202124",
-                              fontSize: "16px",
-                              lineHeight: "1.5",
-                              letterSpacing: ".1px",
-                              fontWeight: "400",
-                              paddingBottom: "0",
-                              paddingTop: "8px",
-                            }}
-                          >
+                          <NotSigned__MessageContainer>
                             <span>
                               Your session ended because there was no activity.
                               Try signing in again.
                             </span>
-                          </div>
-                          <button
-                            style={{
-                              position: "absolute",
-                              top: "50%",
-                              right: "42px",
-                              height: "48px",
-                              transform: "translateY(-50%)",
-                              color: "#fff",
-                              backgroundColor: "#1a73e8",
-                              border: "none",
-                              fontFamily: "Google Sans",
-                              padding: "0 24px 0 24px",
-                              fontSize: ".875rem",
-                              letterSpacing: ".0107142857em",
-                              textTransform: "none",
-                              fontWeight: "500",
-                              transition:
-                                "border 280ms cubic-bezier(0.4,0,0.2,1),box-shadow 280ms cubic-bezier(0.4,0,0.2,1)",
-                              boxShadow: "none",
-                              height: "36px",
-                              borderRadius: "4px",
-                              cursor: "pointer",
-                            }}
+                          </NotSigned__MessageContainer>
+                          <NotSigned__MessageButton
                             className="btn__tryagain"
                             onClick={closeSecondPage}
                           >
                             Try again
-                          </button>
+                          </NotSigned__MessageButton>
                         </ViewContainerPresentation__Header>
                       </div>
                     </ViewContainerPresentation>
@@ -205,30 +176,18 @@ export default function SigninSecondPage({
               English (United Kingdom)
             </FooterContainer__footerContent>
             <FooterContainer__footerContentUL>
-              <li>
-                <a
-                  href="https://support.google.com/accounts?hl=en-GB"
-                  target="_blank"
-                >
-                  Help
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://accounts.google.com/TOS?loc=GE&amp;hl=en-GB&amp;privacy=true"
-                  target="_blank"
-                >
-                  Privacy
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://accounts.google.com/TOS?loc=GE&amp;hl=en-GB"
-                  target="_blank"
-                >
-                  Terms
-                </a>
-              </li>
+              {FooterMap.map((item) => {
+                const { text, routes } = item;
+                return (
+                  <>
+                    <li>
+                      <a href={`${routes}`} target="_blank">
+                        {text}
+                      </a>
+                    </li>
+                  </>
+                );
+              })}
             </FooterContainer__footerContentUL>
           </FooterContainer__footer>
         </Content>

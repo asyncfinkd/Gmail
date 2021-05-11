@@ -75,3 +75,36 @@ export const Container__rowDown = styled.div`
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   width: 18px;
 `;
+
+export const NotSigned__MessageContainer = styled.div`
+  color: #202124;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.1px;
+  font-weight: 400;
+  padding-bottom: 0;
+  padding-top: 8px;
+`;
+
+export const NotSigned__MessageButton = styled.button`
+  position: absolute;
+  top: 50%;
+  right: 42px;
+  height: 48px;
+  transform: translateY(-50%);
+  color: #fff;
+  background-color: #1a73e8;
+  border: none;
+  font-family: "Google Sans";
+  padding: 0 24px 0 24px;
+  font-size: 0.875rem;
+  letter-spacing: 0.0107142857em;
+  text-transform: none;
+  font-weight: 500;
+  transition: border 280ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: none;
+  height: 36px;
+  border-radius: 4px;
+  cursor: pointer;
+`;

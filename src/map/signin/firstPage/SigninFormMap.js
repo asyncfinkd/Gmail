@@ -1,4 +1,4 @@
-import { Routes } from "../../constants/signin/SigninForm";
+import { Routes } from "../../../constants/signin/SigninForm";
 
 export const FormCreateAccountRoutes = [
   {

@@ -23,7 +23,7 @@ import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Input, Label } from "../../../../../../constants/signin/SigninForm";
 import { SigninQuery } from "../../../../../../query/signin/SigninFormQuery";
-import { FormCreateAccountRoutes } from "../../../../../../map/signin/SigninFormMap";
+import { FormCreateAccountRoutes } from "../../../../../../map/signin/firstPage/SigninFormMap";
 
 export default function SigninForm({ setUser, setFirstPage, setLoading }) {
   const [emailOrPhone, setEmailOrPhone] = useState("");
