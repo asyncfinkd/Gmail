@@ -158,7 +158,6 @@ export default function SignupFirstPage({ setFirstPage }) {
       setGmailThirdError(false);
       setLastNameError(false);
       var x = gmail.replace("@gmail.com", "");
-      console.log(x);
 
       db.collection("users").onSnapshot((querySnapshot) => {
         querySnapshot.docs.map((item) => {
