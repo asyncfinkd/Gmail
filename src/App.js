@@ -7,10 +7,7 @@ export default function App() {
   return (
     <>
       <BrowserRouter>
-        <Route path="/" exact>
-          <p>Hello First Page</p>
-        </Route>
-        <Route path="/signin/v2" component={Signin} />
+        <Route path="/" exact component={Signin} />
         <Route path="/signup/v2" component={Signup} />
       </BrowserRouter>
     </>
