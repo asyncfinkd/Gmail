@@ -225,3 +225,22 @@ body {
 .sm {
   height: 36px !important;
 }
+
+.animation__motion {
+  color: #202124;
+  background: #fff;
+  max-width: 256px;
+  max-height: 112px;
+  border-radius: 2px;
+  opacity: 1;
+  outline: 1px solid transparent;
+  z-index: 2000;
+  box-shadow: 0 8px 10px 1px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%),
+    0 5px 5px -3px rgb(0 0 0 / 20%);
+  transition: left 0.2s cubic-bezier(0, 0, 0.2, 1),
+    max-width 0.2s cubic-bezier(0, 0, 0.2, 1),
+    max-height 0.2s cubic-bezier(0, 0, 0.2, 1), opacity 0.05s linear,
+    top 0.2s cubic-bezier(0, 0, 0.2, 1);
+  position: fixed;
+  margin-top: 10px;
+}

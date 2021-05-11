@@ -34,6 +34,7 @@ export default function SigninFirstPage({ setFirstPage, setUser, loading, setLoa
               <PercentContent></PercentContent>
             </Percent>
             </>
+            
           )}
           <Hero>
             <HeroContent>

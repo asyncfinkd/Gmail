@@ -9,10 +9,21 @@ import {
   FormContainer__FooterButtons,
   FormContainer__NextButton,
   FormContainer__createAccount,
+  NotFoundContainer,
+  FormSectionContainer__Utils,
+  Form__ButtonContainer,
+  ShowModal__Container,
+  ModalPopup__Content,
+  __ModalPopup,
+  ModalPopup__Span,
+  ModalPopup__SpanChild,
+  ModalPopup__Utils,
 } from "../../../styles/SigninStyle";
-import db from "../../../../../../lib/firebase.prod";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Input, Label } from "../../../../../../constants/signin/SigninForm";
+import { SigninQuery } from "../../../../../../query/signin/SigninFormQuery";
+import { FormCreateAccountRoutes } from "../../../../../../map/signin/SigninFormMap";
 
 export default function SigninForm({ setUser, setFirstPage, setLoading }) {
   const [emailOrPhone, setEmailOrPhone] = useState("");
@@ -21,6 +32,8 @@ export default function SigninForm({ setUser, setFirstPage, setLoading }) {
   const EmailOrPhoneRef = useRef();
   const [showModal, setShowModal] = useState(false);
   const history = useHistory();
+  const __i = 0;
+  const __f = 1;
 
   const identification = () => {
     if (!emailOrPhone) {
@@ -31,20 +44,16 @@ export default function SigninForm({ setUser, setFirstPage, setLoading }) {
       var x = emailOrPhone.replace("@gmail.com", "");
       setEmailOrPhoneError(false);
       setLoading(true);
-      db.collection("users").onSnapshot((querySnapshot) => {
-        querySnapshot.docs.map((user) => {
-          if (user.data().gmail == `${x}@gmail.com`) {
-            setLoading(false);
-            setUser(user.data());
-            setFirstPage(false);
-            setNotFound(false);
-          } else {
-            setNotFound(true);
-            setEmailOrPhoneError(false);
-            setLoading(false);
-          }
+      {
+        SigninQuery({
+          x,
+          setLoading,
+          setUser,
+          setFirstPage,
+          setNotFound,
+          setEmailOrPhoneError,
         });
-      });
+      }
     }
   };
 
@@ -58,21 +67,14 @@ export default function SigninForm({ setUser, setFirstPage, setLoading }) {
         <span>
           <FormSection>
             <FormSectionContent>
-              <div
-                style={{
-                  width: "370px",
-                  margin: "0 auto",
-                  maxWidth: "100%",
-                }}
-              >
-
+              <FormSectionContainer__Utils>
                 <div class="form__div">
                   <input
                     type="text"
                     className={
                       emailOrPhoneError || notFound
-                        ? "form__input error__input"
-                        : "form__input"
+                        ? `${Input[__f - __f]}`
+                        : `${Input[__f]}`
                     }
                     value={emailOrPhone}
                     onChange={(e) => setEmailOrPhone(e.target.value)}
@@ -84,8 +86,8 @@ export default function SigninForm({ setUser, setFirstPage, setLoading }) {
                     for=""
                     className={
                       emailOrPhoneError || notFound
-                        ? "form__label error__label"
-                        : "form__label"
+                        ? `${Label[__f - __f]}`
+                        : `${Label[__f]}`
                     }
                   >
                     Email or phone
@@ -105,7 +107,6 @@ export default function SigninForm({ setUser, setFirstPage, setLoading }) {
                     <svg
                       aria-hidden="true"
                       fill="currentColor"
-                      focusable="false"
                       style={{ marginRight: "8px" }}
                       width="16px"
                       height="16px"
@@ -119,20 +120,10 @@ export default function SigninForm({ setUser, setFirstPage, setLoading }) {
                 )}
 
                 {notFound && (
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      color: "#d93025",
-                      fontSize: "13px",
-                      textAlign: "center",
-                      marginTop: "12px",
-                    }}
-                  >
+                  <NotFoundContainer>
                     <svg
                       aria-hidden="true"
                       fill="currentColor"
-                      focusable="false"
                       style={{ marginRight: "8px" }}
                       width="16px"
                       height="16px"
@@ -142,7 +133,7 @@ export default function SigninForm({ setUser, setFirstPage, setLoading }) {
                       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
                     </svg>
                     Couldn't find your Google Account
-                  </div>
+                  </NotFoundContainer>
                 )}
                 <div
                   className={
@@ -170,12 +161,7 @@ export default function SigninForm({ setUser, setFirstPage, setLoading }) {
                     </LearnMoreContainer>
                     <FormContainer__Footer>
                       <FormContainer__FooterButtons>
-                        <div
-                          style={{
-                            textAlign: "right",
-                            flexGrow: "1",
-                          }}
-                        >
+                        <Form__ButtonContainer>
                           <div>
                             <div>
                               <FormContainer__NextButton
@@ -186,13 +172,8 @@ export default function SigninForm({ setUser, setFirstPage, setLoading }) {
                               </FormContainer__NextButton>
                             </div>
                           </div>
-                        </div>
-                        <div
-                          style={{
-                            textAlign: "right",
-                            flexGrow: "1",
-                          }}
-                        >
+                        </Form__ButtonContainer>
+                        <Form__ButtonContainer>
                           <div>
                             <FormContainer__createAccount
                               onClick={() => setShowModal(!showModal)}
@@ -200,145 +181,51 @@ export default function SigninForm({ setUser, setFirstPage, setLoading }) {
                               Create account
                               {showModal && (
                                 <>
-                                  <div
-                                    style={{
-                                      backgroundColor: "transparent",
-                                      width: "100%",
-                                      height: "100vh",
-                                      position: "fixed",
-                                      top: "0",
-                                      left: "0",
-                                      cursor: "auto",
-                                    }}
+                                  <ShowModal__Container
                                     onClick={() => {
                                       setShowModal(!showModal);
                                     }}
-                                  ></div>
+                                  ></ShowModal__Container>
                                   <motion.div
-                                    class="modal__popup"
-                                    style={{
-                                      color: "#202124",
-                                      background: "#fff",
-                                      maxWidth: "256px",
-                                      maxHeight: "112px",
-                                      borderRadius: "2px",
-                                      opacity: "1",
-                                      outline: "1px solid transparent",
-                                      zIndex: "2000",
-                                      boxShadow:
-                                        "0 8px 10px 1px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%), 0 5px 5px -3px rgb(0 0 0 / 20%)",
-                                      transition:
-                                        "left .2s  cubic-bezier(0.0,0.0,0.2,1) ,max-width .2s  cubic-bezier(0.0,0.0,0.2,1) ,max-height .2s  cubic-bezier(0.0,0.0,0.2,1) ,opacity .05s linear,top .2s cubic-bezier(0.0,0.0,0.2,1)",
-                                      position: "fixed",
-                                      marginTop: "10px",
-                                    }}
+                                    class="modal__popup animation__motion"
                                     transition={{ duration: 0.3 }}
                                     initial={{ y: -10, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
                                   >
-                                    <div
-                                      className="modal__popup"
-                                      style={{
-                                        maxWidth: "256px",
-                                        maxHeight: "112px",
-                                        overflowX: "hidden",
-                                        overflowY: "auto",
-                                      }}
-                                    >
-                                      <div
-                                        className="modal__resp"
-                                        style={{
-                                          width: "256px",
-                                          height: "auto",
-                                          minWidth: "256px",
-                                          float: "left",
-                                          padding: "16px 0",
-                                        }}
-                                      >
-                                        <span
-                                          className="hover"
-                                          onClick={() => {
-                                            history.push("/signup/v2");
-                                          }}
-                                          style={{
-                                            color: "#222",
-                                            cursor: "pointer",
-                                            display: "block",
-                                            outline: "none",
-                                            overflow: "hidden",
-                                            padding: "0 24px",
-                                            position: "relative",
-                                          }}
-                                        >
-                                          <div
-                                            style={{
-                                              color: "#202124",
-                                              display: "flex",
-                                              fontSize: "14px",
-                                              fontWeight: "400",
-                                              lineHeight: "40px",
-                                              height: "40px",
-                                              position: "relative",
-                                              whiteSpace: "nowrap",
-                                            }}
-                                          >
-                                            <div
-                                              style={{
-                                                minWidth: "0",
-                                                flexGrow: "1",
-                                              }}
-                                            >
-                                              For myself
-                                            </div>
-                                          </div>
-                                        </span>
-                                        <span
-                                          className="hover"
-                                          style={{
-                                            color: "#222",
-                                            cursor: "pointer",
-                                            display: "block",
-                                            outline: "none",
-                                            overflow: "hidden",
-                                            padding: "0 24px",
-                                            position: "relative",
-                                          }}
-                                        >
-                                          <div
-                                            style={{
-                                              color: "#202124",
-                                              display: "flex",
-                                              fontSize: "14px",
-                                              fontWeight: "400",
-                                              lineHeight: "40px",
-                                              height: "40px",
-                                              position: "relative",
-                                              whiteSpace: "nowrap",
-                                            }}
-                                          >
-                                            <div
-                                              style={{
-                                                minWidth: "0",
-                                                flexGrow: "1",
-                                              }}
-                                            >
-                                              To manage my business
-                                            </div>
-                                          </div>
-                                        </span>
-                                      </div>
-                                    </div>
+                                    <ModalPopup__Content className="modal__popup">
+                                      <__ModalPopup className="modal__resp">
+                                        {FormCreateAccountRoutes.map((item) => {
+                                          const { routes, text } = item;
+                                          return (
+                                            <>
+                                              <ModalPopup__Span
+                                                className="hover"
+                                                onClick={() => {
+                                                  history.push(`${routes}`);
+                                                }}
+                                              >
+                                                <ModalPopup__SpanChild>
+                                                  <ModalPopup__Utils>
+                                                    {text}
+                                                  </ModalPopup__Utils>
+                                                </ModalPopup__SpanChild>
+                                              </ModalPopup__Span>
+                                            </>
+                                          );
+                                        })}
+                                      </__ModalPopup>
+                                    </ModalPopup__Content>
                                   </motion.div>
                                 </>
                               )}
                             </FormContainer__createAccount>
                           </div>
-                        </div>
+                        </Form__ButtonContainer>
                       </FormContainer__FooterButtons>
                     </FormContainer__Footer>
                   </span>
                 </div>
-              </div>
+              </FormSectionContainer__Utils>
             </FormSectionContent>
           </FormSection>
         </span>

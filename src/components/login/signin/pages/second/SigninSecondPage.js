@@ -25,7 +25,6 @@ import {
   User__Container,
 } from "./styles/SigninSecondPageStyle";
 import SigninSecondForm from "./form/SigninSecondForm";
-import { motion } from "framer-motion";
 
 export default function SigninSecondPage({
   gmail,
@@ -47,7 +46,6 @@ export default function SigninSecondPage({
         <Content>
           <Hero>
             <HeroContent>
-            <motion.div>
               <HeroImage>
                 <HeroImageContent>
                   <svg
@@ -200,7 +198,6 @@ export default function SigninSecondPage({
                   </ViewContainerContent>
                 </ViewContainer>
               )}
-      </motion.div>
             </HeroContent>
           </Hero>
           <FooterContainer__footer>

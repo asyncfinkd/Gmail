@@ -51,7 +51,7 @@ const bar1 = keyframes`
     left: 100%;
     right: -90%;
   }
-`
+`;
 
 const bar2 = keyframes`
   0% {
@@ -62,41 +62,41 @@ const bar2 = keyframes`
     left: 107%;
     right: -8%;
   }
-`
+`;
 
 export const Percent = styled.div`
   @media (min-width: 601px) {
-  width: 100%;
-  height: 6px;
-  background-color: #e0e0e0;
-  border-radius: 10px;
-  z-index: 9999;
-  position: relative;
-  overflow: hidden;
+    width: 100%;
+    height: 6px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    z-index: 9999;
+    position: relative;
+    overflow: hidden;
   }
 `;
 
 export const PercentContent = styled.span`
-&::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  bottom: 0;
-  background-color: #1a73e8;
-  animation: ${bar1} 2.1s cubic-bezier(0.65, 0.81, 0.73, 0.4) infinite;
-}
-&::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  background-color: #1a73e8;
-  animation: ${bar2} 2.1s cubic-bezier(0.16,0.84,0.44,1) infinite;
-  animation-delay: 1.15s;
-}
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    bottom: 0;
+    background-color: #1a73e8;
+    animation: ${bar1} 2.1s cubic-bezier(0.65, 0.81, 0.73, 0.4) infinite;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #1a73e8;
+    animation: ${bar2} 2.1s cubic-bezier(0.16, 0.84, 0.44, 1) infinite;
+    animation-delay: 1.15s;
+  }
 `;
 
 export const Hero = styled.div`
@@ -124,12 +124,12 @@ export const OpacityPercent = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255, 255, 255, 0.5);
     z-index: 889;
     width: 100%;
     height: 54vh;
   }
-`
+`;
 
 export const HeroContent = styled.div`
   /* Nothing */
@@ -430,4 +430,75 @@ export const FooterContainer__footerContentUL = styled.ul`
     transition: background 0.2s;
     text-decoration: none;
   }
+`;
+
+export const NotFoundContainer = styled.div`
+  display: flex;
+  align-items: center;
+  color: #d93025;
+  font-size: 13px;
+  text-align: center;
+  margin-top: 12px;
+`;
+
+export const FormSectionContainer__Utils = styled.div`
+  width: 370px;
+  margin: 0 auto;
+  max-width: 100%;
+`;
+
+export const Form__ButtonContainer = styled.div`
+  flex-grow: 1;
+  text-align: right;
+`;
+
+export const ShowModal__Container = styled.div`
+  background-color: transparent;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  cursor: auto;
+`;
+
+export const ModalPopup__Content = styled.div`
+  max-width: 256px;
+  max-height: 112px;
+  overflow-x: hidden;
+  overflow-y: auto;
+`;
+
+export const __ModalPopup = styled.div`
+  width: 256px;
+  height: auto;
+  min-width: 256px;
+  float: left;
+  padding: 16px 0;
+`;
+
+export const ModalPopup__Span = styled.span`
+  color: #222;
+  cursor: pointer;
+  display: block;
+  outline: none;
+  overflow: hidden;
+  padding: 0 24px;
+  positon: relative;
+`;
+
+export const ModalPopup__SpanChild = styled.div`
+  color: #202124;
+  display: flex;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 40px;
+  height: 40px;
+  position: relative;
+  white-space: nowrap;
+`;
+
+export const ModalPopup__Utils = styled.div`
+  min-width: 0;
+  flex-grow: 1;
 `;
