@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SigninForm from "./form/SigninForm";
 import {
   Container,
@@ -19,16 +19,23 @@ import {
   FooterContainer__footer,
   FooterContainer__footerContent,
   FooterContainer__footerContentUL,
+  OpacityPercent
 } from "../../styles/SigninStyle";
 
 export default function SigninFirstPage({ setFirstPage, setUser }) {
+  const [loading, setLoading] = useState(false);
   return (
     <>
       <Container>
         <Content>
-          <Percent>
-            <PercentContent role="progressbar"></PercentContent>
-          </Percent>
+        <OpacityPercent></OpacityPercent>
+          {loading && (
+            <>
+            <Percent>
+              <PercentContent></PercentContent>
+            </Percent>
+            </>
+          )}
           <Hero>
             <HeroContent>
               <HeroImage>
@@ -100,6 +107,7 @@ export default function SigninFirstPage({ setFirstPage, setUser }) {
                             <SigninForm
                               setUser={setUser}
                               setFirstPage={setFirstPage}
+                              setLoading={setLoading}
                             />
                           </div>
                         </div>

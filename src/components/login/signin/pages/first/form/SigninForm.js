@@ -14,7 +14,7 @@ import db from "../../../../../../lib/firebase.prod";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 
-export default function SigninForm({ setUser, setFirstPage }) {
+export default function SigninForm({ setUser, setFirstPage, setLoading }) {
   const [emailOrPhone, setEmailOrPhone] = useState("");
   const [emailOrPhoneError, setEmailOrPhoneError] = useState(false);
   const [notFound, setNotFound] = useState(false);
@@ -30,15 +30,18 @@ export default function SigninForm({ setUser, setFirstPage }) {
     } else {
       var x = emailOrPhone.replace("@gmail.com", "");
       setEmailOrPhoneError(false);
+      setLoading(true);
       db.collection("users").onSnapshot((querySnapshot) => {
         querySnapshot.docs.map((user) => {
           if (user.data().gmail == `${x}@gmail.com`) {
+            setLoading(false);
             setUser(user.data());
             setFirstPage(false);
             setNotFound(false);
           } else {
             setNotFound(true);
             setEmailOrPhoneError(false);
+            setLoading(false);
           }
         });
       });
@@ -62,6 +65,7 @@ export default function SigninForm({ setUser, setFirstPage }) {
                   maxWidth: "100%",
                 }}
               >
+
                 <div class="form__div">
                   <input
                     type="text"

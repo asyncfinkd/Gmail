@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Container = styled.div`
   @media all and (min-width: 601px) {
@@ -42,25 +42,59 @@ export const Content = styled.div`
   }
 `;
 
+const bar1 = keyframes`
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+  60%,100% {
+    left: 100%;
+    right: -90%;
+  }
+`
+
+const bar2 = keyframes`
+  0% {
+    left: -200%;
+    right: 100%;
+  }
+  60%,100% {
+    left: 107%;
+    right: -8%;
+  }
+`
+
 export const Percent = styled.div`
   @media (min-width: 601px) {
-    position: absolute;
-    height: 4px;
-    left: 0;
-    overflow: hidden;
-    top: 0;
-    width: 100%;
+  width: 100%;
+  height: 6px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
   }
 `;
 
-export const PercentContent = styled.div`
-  border-radius: 8px 8px 0 0;
-  opacity: 0;
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  transition: opacity 250ms linear;
-  transform: translateZ(0);
+export const PercentContent = styled.span`
+&::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #1a73e8;
+  animation: ${bar1} 2.1s cubic-bezier(0.65, 0.81, 0.73, 0.4) infinite;
+}
+&::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #1a73e8;
+  animation: ${bar2} 2.1s cubic-bezier(0.16,0.84,0.44,1) infinite;
+  animation-delay: 1.15s;
+}
 `;
 
 export const Hero = styled.div`
@@ -81,6 +115,16 @@ export const Hero = styled.div`
     padding: 48px 40px 36px;
   }
 `;
+
+export const OpacityPercent = styled.div`
+  @media (min-width: 601px) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: red;
+  }
+`
 
 export const HeroContent = styled.div`
   /* Nothing */
