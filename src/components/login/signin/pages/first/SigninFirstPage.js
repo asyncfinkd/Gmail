@@ -22,15 +22,14 @@ import {
   OpacityPercent
 } from "../../styles/SigninStyle";
 
-export default function SigninFirstPage({ setFirstPage, setUser }) {
-  const [loading, setLoading] = useState(false);
+export default function SigninFirstPage({ setFirstPage, setUser, loading, setLoading }) {
   return (
     <>
       <Container>
         <Content>
-        <OpacityPercent></OpacityPercent>
           {loading && (
             <>
+            <OpacityPercent></OpacityPercent>
             <Percent>
               <PercentContent></PercentContent>
             </Percent>

@@ -5,11 +5,12 @@ import SigninSecondPage from "./pages/second/SigninSecondPage";
 export default function Signin() {
   const [firstPage, setFirstPage] = useState(true);
   const [user, setUser] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   return (
     <>
       {firstPage ? (
-        <SigninFirstPage setFirstPage={setFirstPage} setUser={setUser} />
+        <SigninFirstPage setFirstPage={setFirstPage} setLoading={setLoading} loading={loading} setUser={setUser} />
       ) : (
         <SigninSecondPage
           name={user.name}

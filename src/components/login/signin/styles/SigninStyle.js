@@ -70,6 +70,7 @@ export const Percent = styled.div`
   height: 6px;
   background-color: #e0e0e0;
   border-radius: 10px;
+  z-index: 9999;
   position: relative;
   overflow: hidden;
   }
@@ -81,6 +82,7 @@ export const PercentContent = styled.span`
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 9999;
   bottom: 0;
   background-color: #1a73e8;
   animation: ${bar1} 2.1s cubic-bezier(0.65, 0.81, 0.73, 0.4) infinite;
@@ -122,7 +124,10 @@ export const OpacityPercent = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: red;
+    background-color: rgba(255,255,255,0.5);
+    z-index: 889;
+    width: 100%;
+    height: 54vh;
   }
 `
 

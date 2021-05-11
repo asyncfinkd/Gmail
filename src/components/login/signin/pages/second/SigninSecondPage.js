@@ -7,8 +7,6 @@ import {
   HeroImage,
   HeroImageContent,
   ViewContainer,
-  Percent,
-  PercentContent,
   ViewContainerContent,
   ViewContainerPresentation,
   ViewContainerPresentation__Header,
@@ -27,6 +25,7 @@ import {
   User__Container,
 } from "./styles/SigninSecondPageStyle";
 import SigninSecondForm from "./form/SigninSecondForm";
+import { motion } from "framer-motion";
 
 export default function SigninSecondPage({
   gmail,
@@ -46,11 +45,9 @@ export default function SigninSecondPage({
     <>
       <Container>
         <Content>
-          <Percent>
-            <PercentContent role="progressbar"></PercentContent>
-          </Percent>
           <Hero>
             <HeroContent>
+            <motion.div>
               <HeroImage>
                 <HeroImageContent>
                   <svg
@@ -203,6 +200,7 @@ export default function SigninSecondPage({
                   </ViewContainerContent>
                 </ViewContainer>
               )}
+      </motion.div>
             </HeroContent>
           </Hero>
           <FooterContainer__footer>
