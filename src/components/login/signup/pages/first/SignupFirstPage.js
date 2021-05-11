@@ -796,7 +796,7 @@ export default function SignupFirstPage({ setFirstPage }) {
                               <div>
                                 <FormContainer__createAccount
                                   onClick={() => {
-                                    history.push("/signin/v2");
+                                    history.push("/");
                                   }}
                                 >
                                   Sign in instead
@@ -811,7 +811,6 @@ export default function SignupFirstPage({ setFirstPage }) {
                 </Form__Content>
               </Form__Container>
             </Validation__Container>
-            {/* second child */}
             <SecondChild__Container>
               <SecondChild__Content>
                 <SecondChild__Figure>
