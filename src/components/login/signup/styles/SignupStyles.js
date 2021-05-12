@@ -230,3 +230,79 @@ export const SecondChild__FigCaption = styled.figcaption`
   font-weight: 300;
   text-align: center;
 `;
+
+export const Validation__ChildContainerContent = styled.div`
+  height: 24px;
+  margin: 0 0;
+  overflow: visible;
+  position: relative;
+  width: 75px;
+`
+
+export const Condition__Error = styled.div`
+  display: flex;
+  color: #d93025;
+  font-size: 13px;
+  text-align: center;
+  margin-top: -7px;
+  height: 30px;
+`
+
+export const Utils__Component = styled.div`
+  padding: 8px 0 0;
+  border-color: #5f6368;
+  display: inline-flex;
+`
+
+export const Utils__SecondComponent = styled.div`
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: none;
+  position: relative;
+  width: 24px;
+`
+
+export const Utils__ChildComponent = styled.div`
+  will-change: unset;
+  display: inline-flex;
+  position: relative;
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  white-space: nowrap;
+  cursor: pointer;
+  vertical-align: bottom;
+  padding: calc((40px - 18px) / 2);
+`
+
+export const Input__Utils = styled.input`
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  cursor: inherit;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #5f6368;
+  border-radius: 2px;
+  top: 0;
+  left: 0;
+`
+
+export const Utils__ChildContent = styled.div`
+  padding: 0;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 16px;
+  align-items: flex-start;
+  width: 100%;
+`
+
+export const Utils__Content = styled.div`
+  max-width: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
+`

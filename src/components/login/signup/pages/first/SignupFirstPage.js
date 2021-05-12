@@ -19,6 +19,13 @@ import {
   SecondChild__Figure,
   SecondChild__Image,
   SecondChild__FigCaption,
+  Validation__ChildContainerContent,
+  Utils__Component,
+  Utils__SecondComponent,
+  Utils__ChildComponent,
+  Input__Utils,
+  Utils__ChildContent,
+  Utils__Content
 } from "./../../styles/SignupStyles";
 import {
   FormContainer__Footer,
@@ -32,6 +39,8 @@ import {
 import { useHistory } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import db from "../../../../../lib/firebase.prod";
+import SignupError from "../../../../../helpers/signup/SignupError";
+import { SignupMap } from "../../../../../map/signup/SignupMap";
 
 export default function SignupFirstPage({ setFirstPage }) {
   const history = useHistory();
@@ -187,15 +196,7 @@ export default function SignupFirstPage({ setFirstPage }) {
             <Validation__Container>
               <Validation__ChildContainer>
                 <div>
-                  <div
-                    style={{
-                      height: "24px",
-                      margin: "0 0",
-                      overflow: "visible",
-                      position: "relative",
-                      width: "75px",
-                    }}
-                  >
+                  <Validation__ChildContainerContent>
                     <div>
                       <svg
                         viewBox="0 0 75 24"
@@ -243,7 +244,7 @@ export default function SignupFirstPage({ setFirstPage }) {
                         </g>
                       </svg>
                     </div>
-                  </div>
+                  </Validation__ChildContainerContent>
                 </div>
               </Validation__ChildContainer>
               <div>
@@ -325,58 +326,8 @@ export default function SignupFirstPage({ setFirstPage }) {
                             </label>
                           </div>
                         </div>
-                        {firstNameError && (
-                          <div
-                            style={{
-                              display: "flex",
-                              color: "#d93025",
-                              fontSize: "13px",
-                              textAlign: "center",
-                              marginTop: "-7px",
-                              height: "30px",
-                            }}
-                          >
-                            <svg
-                              aria-hidden="true"
-                              fill="currentColor"
-                              focusable="false"
-                              style={{ marginRight: "8px" }}
-                              width="16px"
-                              height="16px"
-                              viewBox="0 0 24 24"
-                              xmlns="https://www.w3.org/2000/svg"
-                            >
-                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
-                            </svg>
-                            Enter first name
-                          </div>
-                        )}
-                        {lastNameError && (
-                          <div
-                            style={{
-                              display: "flex",
-                              color: "#d93025",
-                              fontSize: "13px",
-                              textAlign: "center",
-                              marginTop: "-7px",
-                              height: "30px",
-                            }}
-                          >
-                            <svg
-                              aria-hidden="true"
-                              fill="currentColor"
-                              focusable="false"
-                              style={{ marginRight: "8px" }}
-                              width="16px"
-                              height="16px"
-                              viewBox="0 0 24 24"
-                              xmlns="https://www.w3.org/2000/svg"
-                            >
-                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
-                            </svg>
-                            Enter last name
-                          </div>
-                        )}
+                        <SignupError condition={firstNameError} text="Enter a first name" renderProps={{marginRight: "8px"}} />
+                        <SignupError condition={lastNameError} text="Enter last name" renderProps={{marginRight: "8px"}} />
                         <div class="form__div mt-3">
                           <input
                             type="text"
@@ -402,33 +353,7 @@ export default function SignupFirstPage({ setFirstPage }) {
                           </label>
                           <span className="input__span">@gmail.com</span>
                         </div>
-
-                        {gmailThirdError && (
-                          <div
-                            style={{
-                              display: "flex",
-                              color: "#d93025",
-                              fontSize: "13px",
-                              textAlign: "center",
-                              marginTop: "-7px",
-                            }}
-                          >
-                            <svg
-                              aria-hidden="true"
-                              fill="currentColor"
-                              focusable="false"
-                              style={{ marginRight: "8px" }}
-                              width="16px"
-                              height="16px"
-                              viewBox="0 0 24 24"
-                              xmlns="https://www.w3.org/2000/svg"
-                            >
-                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
-                            </svg>
-                            That username is taken. Try another.
-                          </div>
-                        )}
-
+                        <SignupError condition={gmailThirdError} text="That username is taken. Try another." renderProps={{marginRight: "8px"}} />
                         {gmailError != true && (
                           <>
                             {gmailSecondError != true && (
@@ -442,57 +367,8 @@ export default function SignupFirstPage({ setFirstPage }) {
                             )}
                           </>
                         )}
-                        {gmailError && (
-                          <div
-                            style={{
-                              display: "flex",
-                              color: "#d93025",
-                              fontSize: "13px",
-                              textAlign: "center",
-                              marginTop: "-7px",
-                            }}
-                          >
-                            <svg
-                              aria-hidden="true"
-                              fill="currentColor"
-                              focusable="false"
-                              style={{ marginRight: "8px" }}
-                              width="16px"
-                              height="16px"
-                              viewBox="0 0 24 24"
-                              xmlns="https://www.w3.org/2000/svg"
-                            >
-                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
-                            </svg>
-                            Choose a Gmail address
-                          </div>
-                        )}
-                        {gmailSecondError && (
-                          <div
-                            style={{
-                              display: "flex",
-                              alignItems: "flex-start",
-                              color: "#d93025",
-                              fontSize: "13px",
-                              marginTop: "-7px",
-                            }}
-                          >
-                            <svg
-                              aria-hidden="true"
-                              fill="currentColor"
-                              focusable="false"
-                              style={{ marginRight: "8px" }}
-                              width="16px"
-                              height="16px"
-                              viewBox="0 0 24 24"
-                              xmlns="https://www.w3.org/2000/svg"
-                            >
-                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
-                            </svg>
-                            Sorry, your username must be between 6 and 30
-                            characters long.
-                          </div>
-                        )}
+                        <SignupError condition={gmailError} text="Choose a Gmail address" renderProps={{marginRight: "8px"}} />
+                        <SignupError childProps={{textAlign: "left"}} condition={gmailSecondError} text="Sorry, your username must be between 6 and 30 characters long." renderProps={{marginRight: "8px"}} />
                         <div
                           className="identify flex"
                           style={{ paddingTop: "14px" }}
@@ -557,58 +433,8 @@ export default function SignupFirstPage({ setFirstPage }) {
                             </label>
                           </div>
                         </div>
-                        {coupleFirstNameLastNameError && (
-                          <div
-                            style={{
-                              display: "flex",
-                              color: "#d93025",
-                              fontSize: "13px",
-                              textAlign: "center",
-                              marginTop: "-7px",
-                              height: "35px",
-                            }}
-                          >
-                            <svg
-                              aria-hidden="true"
-                              fill="currentColor"
-                              focusable="false"
-                              style={{ marginRight: "8px" }}
-                              width="16px"
-                              height="16px"
-                              viewBox="0 0 24 24"
-                              xmlns="https://www.w3.org/2000/svg"
-                            >
-                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
-                            </svg>
-                            Those passwords didn't match. Try again.
-                          </div>
-                        )}
-                        {confirmPasswordError && (
-                          <div
-                            style={{
-                              display: "flex",
-                              color: "#d93025",
-                              fontSize: "13px",
-                              textAlign: "center",
-                              marginTop: "-7px",
-                              height: "35px",
-                            }}
-                          >
-                            <svg
-                              aria-hidden="true"
-                              fill="currentColor"
-                              focusable="false"
-                              style={{ marginRight: "8px" }}
-                              width="16px"
-                              height="16px"
-                              viewBox="0 0 24 24"
-                              xmlns="https://www.w3.org/2000/svg"
-                            >
-                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
-                            </svg>
-                            Enter a confirm password
-                          </div>
-                        )}
+                        <SignupError condition={coupleFirstNameLastNameError} childProps={{height: "35px"}} text="Those passwords didn't match. Try again." renderProps={{marginRight: "8px"}} />
+                        <SignupError condition={confirmPasswordError} childProps={{height: "35px"}} text="Enter a confirm password" renderProps={{marginRight: "8px"}} />
                         {passwordError != true && (
                           <>
                             {passwordLengthError != true && (
@@ -627,142 +453,37 @@ export default function SignupFirstPage({ setFirstPage }) {
                             )}
                           </>
                         )}
-                        {passwordError && (
-                          <div
-                            style={{
-                              display: "flex",
-                              color: "#d93025",
-                              fontSize: "13px",
-                              textAlign: "center",
-                              marginTop: "-7px",
-                              height: "35px",
-                            }}
-                          >
-                            <svg
-                              aria-hidden="true"
-                              fill="currentColor"
-                              focusable="false"
-                              style={{ marginRight: "8px" }}
-                              width="16px"
-                              height="16px"
-                              viewBox="0 0 24 24"
-                              xmlns="https://www.w3.org/2000/svg"
-                            >
-                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
-                            </svg>
-                            Enter a password
-                          </div>
-                        )}
-                        {passwordLengthError && (
-                          <div
-                            style={{
-                              display: "flex",
-                              color: "#d93025",
-                              fontSize: "13px",
-                              textAlign: "center",
-                              marginTop: "-7px",
-                              height: "35px",
-                            }}
-                          >
-                            <svg
-                              aria-hidden="true"
-                              fill="currentColor"
-                              focusable="false"
-                              style={{ marginRight: "8px" }}
-                              width="16px"
-                              height="16px"
-                              viewBox="0 0 24 24"
-                              xmlns="https://www.w3.org/2000/svg"
-                            >
-                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
-                            </svg>
-                            Use 8 characters or more for you password
-                          </div>
-                        )}
+                        <SignupError condition={passwordError} text="Enter a password" childProps={{height: "35px"}} renderProps={{marginRight: "8px"}} />
+                        <SignupError condition={passwordLengthError} text="Use 8 characters or more for you password" childProps={{height: "35px"}} renderProps={{marginRight: "8px"}} />
                         <div style={{ marginTop: "-10px" }}>
                           <div>
                             <div>
                               <div>
-                                <div
-                                  style={{
-                                    padding: "8px 0 0",
-                                    borderColor: "#5f6368",
-                                    display: "inline-flex",
-                                  }}
+                                <Utils__Component
                                 >
-                                  <div
-                                    style={{
-                                      height: "24px",
-                                      display: "flex",
-                                      justifyContent: "center",
-                                      alignItems: "center",
-                                      flex: "none",
-                                      position: "relative",
-                                      width: "24px",
-                                    }}
+                                  <Utils__SecondComponent
                                     onClick={() =>
                                       setShowPassword(!showPassword)
                                     }
                                   >
-                                    <div
-                                      style={{
-                                        willChange: "unset",
-                                        display: "inline-flex",
-                                        position: "relative",
-                                        flex: "0 0 18px",
-                                        width: "18px",
-                                        height: "18px",
-                                        whiteSpace: "nowrap",
-                                        cursor: "pointer",
-                                        verticalAlign: "bottom",
-                                        padding: "calc((40px - 18px)/2)",
-                                      }}
+                                    <Utils__ChildComponent
                                     >
-                                      <input
+                                      <Input__Utils
                                         type="checkbox"
                                         id="input"
-                                        style={{
-                                          position: "absolute",
-                                          padding: "0",
-                                          margin: "0",
-                                          cursor: "inherit",
-                                          width: "18px",
-                                          height: "18px",
-                                          border: "2px solid #5f6368",
-                                          borderRadius: "2px",
-                                          top: "0",
-                                          left: "0",
-                                        }}
                                       />
-                                    </div>
-                                  </div>
-                                  <div
-                                    style={{
-                                      padding: "0",
-                                      display: "flex",
-                                      flex: "0 1 auto",
-                                      flexDirection: "column",
-                                      justifyContent: "center",
-                                      marginLeft: "16px",
-                                      alignItems: "flex-start",
-                                      width: "100%",
-                                    }}
-                                  >
-                                    <div
-                                      style={{
-                                        maxWidth: "100%",
-                                        paddingTop: "0",
-                                        paddingBottom: "0",
-                                      }}
-                                    >
+                                    </Utils__ChildComponent>
+                                  </Utils__SecondComponent>
+                                  <Utils__ChildContent>
+                                    <Utils__Content>
                                       <label htmlFor="input">
                                         <div style={{ cursor: "pointer" }}>
                                           Show password
                                         </div>
                                       </label>
-                                    </div>
-                                  </div>
-                                </div>
+                                    </Utils__Content>
+                                  </Utils__ChildContent>
+                                </Utils__Component>
                               </div>
                             </div>
                           </div>
@@ -826,30 +547,21 @@ export default function SignupFirstPage({ setFirstPage }) {
               English (United Kingdom)
             </FooterContainer__footerContent>
             <FooterContainer__footerContentUL>
-              <li>
+              {SignupMap.map((item) => {
+                const { route, text } = item;
+                return(
+                  <>
+                <li>
                 <a
-                  href="https://support.google.com/accounts?hl=en-GB"
+                  href={route}
                   target="_blank"
                 >
-                  Help
+                  {text}
                 </a>
               </li>
-              <li>
-                <a
-                  href="https://accounts.google.com/TOS?loc=GE&amp;hl=en-GB&amp;privacy=true"
-                  target="_blank"
-                >
-                  Privacy
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://accounts.google.com/TOS?loc=GE&amp;hl=en-GB"
-                  target="_blank"
-                >
-                  Terms
-                </a>
-              </li>
+                  </>
+                )
+              })}
             </FooterContainer__footerContentUL>
           </FooterContainer__footer>
         </Content>
