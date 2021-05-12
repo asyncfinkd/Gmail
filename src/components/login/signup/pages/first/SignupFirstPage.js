@@ -38,9 +38,9 @@ import {
 } from "../../../../login/signin/styles/SigninStyle";
 import { useHistory } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import db from "../../../../../lib/firebase.prod";
 import SignupError from "../../../../../helpers/signup/SignupError";
 import { SignupMap } from "../../../../../map/signup/SignupMap";
+import { IdentificationSignupQuery } from "../../../../../query/signup/SignupQuery";
 
 export default function SignupFirstPage({ setFirstPage }) {
   const history = useHistory();
@@ -168,17 +168,7 @@ export default function SignupFirstPage({ setFirstPage }) {
       setLastNameError(false);
       var x = gmail.replace("@gmail.com", "");
 
-      db.collection("users").onSnapshot((querySnapshot) => {
-        querySnapshot.docs.map((item) => {
-          if (item.data().gmail == `${x}@gmail.com`) {
-            setGmailThirdError(true);
-            gmailRef.current.focus();
-          } else {
-            setGmailThirdError(false);
-            setFirstPage(false);
-          }
-        });
-      });
+      {IdentificationSignupQuery({x, setGmailThirdError, setFirstPage, gmailRef})}
     }
   };
 
