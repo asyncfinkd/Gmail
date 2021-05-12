@@ -32,6 +32,10 @@ import {
   BodyRight__Figure,
   BodyRight__Image,
   BodyRight__Figcaption,
+  BodyLeft__ValidationContent,
+  BodyLeft__ValidationContentChild,
+  Container__Children,
+  ShowPopup__RenderComponent
 } from "./styles/SignupSecondPageStyles";
 import {
   FooterContainer__footer,
@@ -40,6 +44,7 @@ import {
 } from "../../../../login/signin/styles/SigninStyle";
 import { Language } from "./fixtures/languages";
 import SignupSecondPageMap from "./map/SignupSecondPageMap";
+import { SignupMap } from "../../../../../map/signup/SignupMap";
 
 export default function SignupSecondPage({ back }) {
   const [showPopup, setShowPopup] = useState(false);
@@ -68,7 +73,6 @@ export default function SignupSecondPage({ back }) {
               <PercentContent></PercentContent>
             </Percent>
             <BodyContent role="presentation" tabIndex="null">
-              {/* child component */}
               <BodyLeft__Container>
                 <BodyLeft__LogoContainer>
                   <div>
@@ -160,7 +164,6 @@ export default function SignupSecondPage({ back }) {
                                   <BodyLeft__ValidationContainer
                                     style={{ marginTop: "15px" }}
                                   >
-                                    {/* child */}
                                     <BodyLeft__ValidationFirstContent>
                                       <BodyLeft__ValidationFirstContentContainer
                                         onClick={() => setShowPopup(!showPopup)}
@@ -168,70 +171,26 @@ export default function SignupSecondPage({ back }) {
                                         <div role="presentation">
                                           <div role="presentation">
                                             <BodyLeft__ValidationSelect>
-                                              <div
-                                                style={{
-                                                  height: "24px",
-                                                  opacity: "1",
-                                                  width: "24px",
-                                                  backgroundRepeat: "no-repeat",
-                                                  left: "50%",
-                                                  transform:
-                                                    "translate(-50%, -50%)",
-                                                  position: "absolute",
-                                                  right: "auto",
-                                                  top: "50%",
-                                                  verticalAlign: "middle",
-                                                }}
-                                              >
-                                                <div
-                                                  style={{
-                                                    display: "flex",
-                                                    alignItems: "center",
-                                                    justifyContent: "center",
-                                                    width: "24px",
-                                                    height: "24px",
-                                                  }}
-                                                >
+                                              <BodyLeft__ValidationContent>
+                                                <BodyLeft__ValidationContentChild>
                                                   <BodyLeft__ImageComponent
                                                     style={{
                                                       backgroundPosition: `${position}`,
                                                     }}
                                                   ></BodyLeft__ImageComponent>
-                                                </div>
-                                              </div>
+                                                </BodyLeft__ValidationContentChild>
+                                              </BodyLeft__ValidationContent>
                                             </BodyLeft__ValidationSelect>
                                           </div>
                                         </div>
-                                        <div
-                                          style={{
-                                            top: "5px",
-                                            borderTopColor: "rgba(0,0,0,0.38)",
-                                            borderColor:
-                                              "rgba(68,68,68,0.4) transparent",
-                                            borderStyle: "solid",
-                                            borderWidth: "6px 6px 0 6px",
-                                            height: "0",
-                                            width: "0",
-                                            position: "absolute",
-                                            right: "-7px",
-                                          }}
-                                        ></div>
+                                        <Container__Children></Container__Children>
                                         {showPopup && (
                                           <>
-                                            <div
-                                              style={{
-                                                backgroundColor: "transparent",
-                                                width: "100%",
-                                                height: "100vh",
-                                                position: "fixed",
-                                                top: "0",
-                                                left: "0",
-                                                cursor: "auto",
-                                              }}
+                                            <ShowPopup__RenderComponent
                                               onClick={() => {
                                                 setShowPopup(!showPopup);
                                               }}
-                                            ></div>
+                                            ></ShowPopup__RenderComponent>
                                             <BodyLeft__ValidationFirstContentSelect>
                                               {Language.map((item) => {
                                                 return (
@@ -249,7 +208,6 @@ export default function SignupSecondPage({ back }) {
                                         )}
                                       </BodyLeft__ValidationFirstContentContainer>
                                     </BodyLeft__ValidationFirstContent>
-                                    {/* child */}
                                     <div
                                       class="form__div"
                                       style={{
@@ -339,30 +297,18 @@ export default function SignupSecondPage({ back }) {
                 English (United Kingdom)
               </FooterContainer__footerContent>
               <FooterContainer__footerContentUL>
-                <li>
+                {SignupMap.map((item) => {
+                  const { text, route } = item;
+                  return (<li>
                   <a
-                    href="https://support.google.com/accounts?hl=en-GB"
+                    href={`${route}`}
                     target="_blank"
                   >
-                    Help
+                    {text}
                   </a>
                 </li>
-                <li>
-                  <a
-                    href="https://accounts.google.com/TOS?loc=GE&amp;hl=en-GB&amp;privacy=true"
-                    target="_blank"
-                  >
-                    Privacy
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://accounts.google.com/TOS?loc=GE&amp;hl=en-GB"
-                    target="_blank"
-                  >
-                    Terms
-                  </a>
-                </li>
+                  )
+                })}
               </FooterContainer__footerContentUL>
             </FooterContainer__footer>
           </BodyContainer>

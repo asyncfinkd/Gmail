@@ -380,3 +380,46 @@ export const BodyRight__Figcaption = styled.figcaption`
   font-size: 16px;
   font-weight: 300;
 `;
+
+export const BodyLeft__ValidationContent = styled.div`
+  height: 24px;
+  opacity: 1;
+  width: 24px;
+  background-repeat: no-repeat;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  right: auto;
+  top: 50%;
+  vertical-align: middle
+`
+
+export const BodyLeft__ValidationContentChild = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+`
+
+export const Container__Children = styled.div`
+  top: 5px;
+  border-top-color: rgba(0,0,0,0.38);
+  border-color: rgba(68,68,68,0.4) transparent;
+  border-style: solid;
+  border-width: 6px 6px 0 6px;
+  height: 0;
+  width: 0;
+  position: absolute;
+  right: -7px;
+`
+
+export const ShowPopup__RenderComponent = styled.div`
+  background-color: transparent;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  cursor: auto;
+`
