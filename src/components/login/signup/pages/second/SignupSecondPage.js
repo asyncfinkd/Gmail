@@ -35,7 +35,7 @@ import {
   BodyLeft__ValidationContent,
   BodyLeft__ValidationContentChild,
   Container__Children,
-  ShowPopup__RenderComponent
+  ShowPopup__RenderComponent,
 } from "./styles/SignupSecondPageStyles";
 import {
   FooterContainer__footer,
@@ -45,6 +45,7 @@ import {
 import { Language } from "./fixtures/languages";
 import SignupSecondPageMap from "./map/SignupSecondPageMap";
 import { SignupMap } from "../../../../../map/signup/SignupMap";
+import SignupError from "../../../../../helpers/signup/SignupError";
 
 export default function SignupSecondPage({ back }) {
   const [showPopup, setShowPopup] = useState(false);
@@ -247,6 +248,19 @@ export default function SignupSecondPage({ back }) {
                                       </label>
                                     </div>
                                   </BodyLeft__ValidationContainer>
+                                  <div
+                                    style={{
+                                      display: "flex",
+                                      justifyContent: "center",
+                                      marginRight: "8px",
+                                    }}
+                                  >
+                                    <SignupError
+                                      condition={phoneNumberError}
+                                      text="Please enter a phone number."
+                                      renderProps={{ marginRight: "8px" }}
+                                    />
+                                  </div>
                                 </div>
                               </div>
                             </BodyLeft__ContentSection>
@@ -299,15 +313,13 @@ export default function SignupSecondPage({ back }) {
               <FooterContainer__footerContentUL>
                 {SignupMap.map((item) => {
                   const { text, route } = item;
-                  return (<li>
-                  <a
-                    href={`${route}`}
-                    target="_blank"
-                  >
-                    {text}
-                  </a>
-                </li>
-                  )
+                  return (
+                    <li>
+                      <a href={`${route}`} target="_blank">
+                        {text}
+                      </a>
+                    </li>
+                  );
                 })}
               </FooterContainer__footerContentUL>
             </FooterContainer__footer>
